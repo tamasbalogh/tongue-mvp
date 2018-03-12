@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tongue</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">LOG IN</string>
+    <string name="log_in_with_facebook">LOG IN WITH FACEBOOK</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="tongue_logo">Tongue Logo</string>
+</resources>
