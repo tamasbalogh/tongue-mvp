@@ -28,7 +28,11 @@
     </style>
     
     <style name="tongue_logo">
-        <item name=""
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:contentDescription">@string/tongue_logo</item>
     </style>
 
 </resources>

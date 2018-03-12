@@ -9,12 +9,8 @@
 
     <ImageView
         android:id="@+id/loginImageViewLogo"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
+        style="@style/tongue_logo"
         android:layout_marginTop="24dp"
-        android:contentDescription="@string/tongue_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginEditTextEmail" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/loginButtonLogIn"
         style="@style/buttonStyle"
         android:layout_marginTop="32dp"
         android:text="@string/log_in"
@@ -51,15 +47,23 @@
         app:layout_constraintTop_toBottomOf="@+id/loginEditTextPassword" />
 
     <Button
-        android:id="@+id/loginButtonWithFacebook"
+        android:id="@+id/loginButtonLogInWithFacebook"
         style="@style/buttonStyle"
         android:layout_marginTop="16dp"
         android:text="@string/log_in_with_facebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButtonLogIn" />
 
-
+    <ProgressBar
+        android:id="@+id/loginProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/loginTextViewSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButtonLogInWithFacebook" />
 
     <TextView
         android:id="@+id/loginTextViewSignUp"
