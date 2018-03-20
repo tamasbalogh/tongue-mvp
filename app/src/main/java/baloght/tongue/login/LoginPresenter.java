@@ -76,8 +76,8 @@ public class LoginPresenter implements LoginMVP.ProvidedPresenterOperations {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 //view.showToast(makeToast("An error occurd, please check the network."));
                 view.showToast(makeToast("logged in mode: " + model.getCurrentUserLoggedInMode() + "\n" +
-                                makeToast("email: " + model.getCurrentEmail()) + "\n" +
-                                makeToast("token: " + model.getAccessToken())));
+                                "email: " + model.getCurrentEmail() + "\n" +
+                                "token: " + model.getAccessToken()));
                 ProgressBarUtils.hideProgressBar(view.getProgressBar());
             }
 
