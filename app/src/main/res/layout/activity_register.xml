@@ -2,10 +2,11 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:id="@+id/registerLayout"
+    android:onClick="registerLayout">
 
 
     <EditText
@@ -13,10 +14,11 @@
         style="@style/editTextStyle"
         android:layout_marginTop="40dp"
         android:hint="Email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/registerEditTextUser"
         app:layout_constraintStart_toStartOf="@+id/registerEditTextUser"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:imeOptions="actionNext"/>
 
     <EditText
         android:id="@+id/registerEditTextUser"
@@ -26,7 +28,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/registerEditTextPassword"
         app:layout_constraintStart_toStartOf="@+id/registerEditTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/registerEditTextEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/registerEditTextEmail"
+        android:imeOptions="actionNext"/>
 
     <EditText
         android:id="@+id/registerEditTextPassword"
@@ -36,7 +39,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/registerImageViewLogo"
         app:layout_constraintStart_toStartOf="@+id/registerImageViewLogo"
-        app:layout_constraintTop_toBottomOf="@+id/registerEditTextUser" />
+        app:layout_constraintTop_toBottomOf="@+id/registerEditTextUser"
+        android:imeOptions="actionDone"/>
 
     <Button
         android:id="@+id/registerButtonSignUp"
@@ -45,7 +49,8 @@
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEditTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/registerEditTextPassword"
+        android:onClick="registerButton"/>
 
     <ProgressBar
         android:id="@+id/registerProgressBar"
@@ -56,7 +61,8 @@
         app:layout_constraintBottom_toTopOf="@+id/registerImageViewLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButtonSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/registerButtonSignUp"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/registerImageViewLogo"
@@ -65,6 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerButtonSignUp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:onClick="registerLogo"/>
 
 </android.support.constraint.ConstraintLayout>
