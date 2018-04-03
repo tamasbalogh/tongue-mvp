@@ -13,7 +13,8 @@ public interface DataManager extends PreferencesHelper, ApiHelper{
     void updateUserInfo(
             String accessToken,
             LoggedInMode loggedInMode,
-            String email);
+            String email,
+            String profilePicUrl);
 
     enum LoggedInMode {
 

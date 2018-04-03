@@ -19,4 +19,8 @@ public interface PreferencesHelper {
     String getAccessToken();
 
     void setAccessToken(String accessToken);
+
+    String getCurrentUserProfilePicUrl();
+
+    void setCurrentUserProfilePicUrl(String profilePicUrl);
 }

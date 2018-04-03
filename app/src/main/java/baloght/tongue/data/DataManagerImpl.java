@@ -44,14 +44,16 @@ public class DataManagerImpl implements DataManager {
         updateUserInfo(
                 null,
                 LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
+                null,
                 null);
     }
 
     @Override
-    public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String email) {
+    public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String email, String profilePicUrl) {
         setAccessToken(accessToken);
         setCurrentUserEmail(email);
         setCurrentUserLoggedInMode(loggedInMode);
+        setCurrentUserProfilePicUrl(profilePicUrl);
     }
 
     @Override
@@ -82,6 +84,16 @@ public class DataManagerImpl implements DataManager {
     @Override
     public void setAccessToken(String accessToken) {
         preferencesHelperImpl.setAccessToken(accessToken);
+    }
+
+    @Override
+    public String getCurrentUserProfilePicUrl() {
+        return preferencesHelperImpl.getCurrentUserProfilePicUrl();
+    }
+
+    @Override
+    public void setCurrentUserProfilePicUrl(String profilePicUrl) {
+        preferencesHelperImpl.setCurrentUserProfilePicUrl(profilePicUrl);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package baloght.tongue.ui.main;
 
+import javax.inject.Inject;
+
 import baloght.tongue.data.DataManager;
 import baloght.tongue.ui.base.BasePresenter;
 
@@ -9,6 +11,7 @@ import baloght.tongue.ui.base.BasePresenter;
 
 public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> implements MainMvpPresenter<V>{
 
+    @Inject
     public MainPresenter(DataManager dataManager) {
         super(dataManager);
     }

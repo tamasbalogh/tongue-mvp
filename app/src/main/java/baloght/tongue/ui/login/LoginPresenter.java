@@ -38,6 +38,13 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
     }
 
     @Override
+    public void checkLoggedInmode() {
+        if(getDataManager().getCurrentUserLoggedInMode() != DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType()){
+            getMvpView().OpenMainActivity();
+        }
+    }
+
+    @Override
     public void loginWithServer(final EditText email, EditText password) {
 
         if(email.getText().toString().isEmpty()){
@@ -70,7 +77,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 getDataManager().updateUserInfo("takenfromresponsebody",
                         DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
-                        email.getText().toString());
+                        email.getText().toString(),"profilePicURL");
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
             }
@@ -104,7 +111,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                 request.executeAsync();
 
                 getDataManager().updateUserInfo(loginResult.getAccessToken().getToken(),
-                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, getDataManager().getCurrentUserEmail());
+                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, getDataManager().getCurrentUserEmail(),"profilePicURL");
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
             }

@@ -15,6 +15,7 @@ import baloght.tongue.ui.base.MvpPresenter;
 @PerActivity
 public interface LoginMvpPresenter <V extends LoginMvpView> extends MvpPresenter<V> {
 
+    void checkLoggedInmode();
     void loginWithServer(EditText email, EditText password);
     void loginWithFacebook(LoginButton loginButton, CallbackManager callbackManager);
 }
