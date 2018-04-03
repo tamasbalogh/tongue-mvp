@@ -9,6 +9,6 @@ public class ApiEndpoint {
     private static final String BASE = "http://localhost:3000";
     public static final String LOGIN = BASE + "/login";
     public static final String REGISTER = BASE + "/register";
-    public static final String MAINPAGE = BASE + "/auth/mainpage";
+    public static final String MAINPAGE = BASE + "/authed/mainpage";
 
 }

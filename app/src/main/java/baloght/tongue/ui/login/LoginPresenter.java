@@ -39,6 +39,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
 
     @Override
     public void loginWithServer(final EditText email, EditText password) {
+
         if(email.getText().toString().isEmpty()){
             getMvpView().warnUser(email);
             return;
@@ -84,8 +85,6 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
     @Override
     public void loginWithFacebook(final LoginButton loginButton, CallbackManager callbackManager) {
 
-        final String[] email = new String[1];
-
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -93,7 +92,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         try {
-                           email[0] = object.getString("email");
+                            getDataManager().setCurrentUserEmail(object.getString("email"));
                         }catch (Exception e){
                             getMvpView().showMessage(e.toString());
                         }
@@ -105,7 +104,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                 request.executeAsync();
 
                 getDataManager().updateUserInfo(loginResult.getAccessToken().getToken(),
-                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, email[0]);
+                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, getDataManager().getCurrentUserEmail());
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
             }

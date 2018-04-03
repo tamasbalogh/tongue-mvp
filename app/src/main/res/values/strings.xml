@@ -8,5 +8,6 @@
     <string name="tongue_logo">Tongue Logo</string>
     <string name="facebook_app_id">2012327285702582</string>
     <string name="fb_login_protocol_scheme">fb2012327285702582</string>
+    <string name="welcome">Welcome </string>
 
 </resources>

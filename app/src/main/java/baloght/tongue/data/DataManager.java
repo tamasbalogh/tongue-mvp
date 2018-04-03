@@ -8,8 +8,7 @@ import baloght.tongue.data.prefs.PreferencesHelper;
 
 public interface DataManager extends PreferencesHelper, ApiHelper{
 
-    void setUserAsLoggedOut()
-            ;
+    void setUserAsLoggedOut();
 
     void updateUserInfo(
             String accessToken,

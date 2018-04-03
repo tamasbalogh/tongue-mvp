@@ -4,6 +4,7 @@ package baloght.tongue.di.component;
 import baloght.tongue.di.PerActivity;
 import baloght.tongue.di.module.ActivityModule;
 import baloght.tongue.ui.login.LoginActivity;
+import baloght.tongue.ui.main.MainActivity;
 import baloght.tongue.ui.register.RegisterActivity;
 import dagger.Component;
 
@@ -17,4 +18,5 @@ public interface ActivityComponent {
 
      void inject(LoginActivity activity);
      void inject(RegisterActivity activity);
+     void inject(MainActivity activity);
 }

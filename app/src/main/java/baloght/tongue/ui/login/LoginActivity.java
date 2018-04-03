@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     private EditText email, password;
     private ProgressBar progressBar;
     private LoginButton logInWithFacebook;
-    CallbackManager callbackManager;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
