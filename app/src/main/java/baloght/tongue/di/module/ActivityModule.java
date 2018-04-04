@@ -15,6 +15,9 @@ import baloght.tongue.ui.main.MainPresenter;
 import baloght.tongue.ui.register.RegisterMvpPresenter;
 import baloght.tongue.ui.register.RegisterMvpView;
 import baloght.tongue.ui.register.RegisterPresenter;
+import baloght.tongue.ui.splash.SplashMvpPresenter;
+import baloght.tongue.ui.splash.SplashMvpView;
+import baloght.tongue.ui.splash.SplashPresenter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -58,6 +61,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     MainMvpPresenter<MainMvpView> provideMainPresenter (MainPresenter<MainMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    SplashMvpPresenter<SplashMvpView> provideSplashPresenter (SplashPresenter<SplashMvpView> presenter){
         return presenter;
     }
 }
