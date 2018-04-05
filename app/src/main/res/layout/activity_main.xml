@@ -5,14 +5,13 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:onClick="mainLayout">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/mainTextViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto"
         android:text="@string/welcome"
         android:textColor="@color/text"
@@ -25,24 +24,44 @@
         android:id="@+id/mainCircleImageViewProfilePic"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/avatar"
         app:civ_border_color="@color/text"
         app:civ_border_width="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTextViewUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/mainTextViewUserName"
+        android:onClick="mainCircleImageView"/>
 
     <ImageView
         android:id="@+id/mainImageViewLogo"
         style="@style/tongue_logo"
         android:layout_width="0dp"
         android:layout_marginBottom="24dp"
-        android:onClick="mainLogo"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
          />
+
+    <Button
+        android:id="@+id/mainButtonLetsStart"
+        style="@style/buttonStyle"
+        android:layout_marginBottom="60dp"
+        android:text="@string/lets_start"
+        app:layout_constraintBottom_toTopOf="@+id/mainImageViewLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainCircleImageViewProfilePic"
+        android:onClick="mainLetsStart"/>
+
+    <Button
+        android:id="@+id/mainButtonLogOut"
+        style="@style/buttonStyle"
+        android:layout_marginTop="32dp"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainButtonLetsStart"
+        android:onClick="mainLogOut"/>
 </android.support.constraint.ConstraintLayout>

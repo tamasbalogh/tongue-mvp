@@ -1,26 +1,17 @@
 package baloght.tongue.ui.login;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import javax.inject.Inject;
 import baloght.tongue.data.DataManager;
 import baloght.tongue.ui.base.BasePresenter;
@@ -35,13 +26,6 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
     @Inject
     public LoginPresenter(DataManager dataManager) {
         super(dataManager);
-    }
-
-    @Override
-    public void checkLoggedInmode() {
-        if(getDataManager().getCurrentUserLoggedInMode() != DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType()){
-            getMvpView().OpenMainActivity();
-        }
     }
 
     @Override
@@ -75,9 +59,10 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                getDataManager().updateUserInfo("takenfromresponsebody",
+                getDataManager().updateUserInfo("asdASDSasdUgHGHJKlKKLlklLllkK2u12fjkasdlfa3oda81341klFASdslésdf",
                         DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
-                        email.getText().toString(),"profilePicURL");
+                        "testuser",
+                        null);
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
             }
@@ -95,30 +80,32 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         try {
-                            getDataManager().setCurrentUserEmail(object.getString("email"));
+                            Log.d("picture","picture");
+                            getDataManager().setCurrentUserName(object.getString("first_name"));
                         }catch (Exception e){
                             getMvpView().showMessage(e.toString());
                         }
                     }
                 });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "email");
+                parameters.putString("fields", "email,first_name,picture");
                 request.setParameters(parameters);
                 request.executeAsync();
 
                 getDataManager().updateUserInfo(loginResult.getAccessToken().getToken(),
-                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, getDataManager().getCurrentUserEmail(),"profilePicURL");
+                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, getDataManager().getCurrentUserName(),"profilePicURL");
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
             }
 
             @Override
             public void onCancel() {
-                getMvpView().showMessage("Cancel");
             }
 
             @Override

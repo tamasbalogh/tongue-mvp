@@ -12,9 +12,9 @@ public interface PreferencesHelper {
 
     void setCurrentUserLoggedInMode(DataManager.LoggedInMode mode);
 
-    String getCurrentUserEmail();
+    String getCurrentUserName();
 
-    void setCurrentUserEmail(String email);
+    void setCurrentUserName(String userName);
 
     String getAccessToken();
 

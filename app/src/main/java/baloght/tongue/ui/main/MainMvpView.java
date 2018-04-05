@@ -7,8 +7,7 @@ import baloght.tongue.ui.base.MvpView;
  */
 
 public interface MainMvpView extends MvpView {
-    void openLoginActivity();
     void updateUserName(String userName);
-    void updateUserEmail(String userEmail);
     void updateUserProfilePic(String userProfilePicUrl);
+    void OpenLoginActivity();
 }

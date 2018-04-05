@@ -27,7 +27,6 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
         getActivityComponent().inject(this);
         mPresenter.onAttach(SplashActivity.this);
-
     }
 
     @Override
@@ -40,11 +39,6 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
     public void openMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
-    }
-
-    @Override
-    public void startSyncService() {
-
     }
 
     @Override

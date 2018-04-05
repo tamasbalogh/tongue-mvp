@@ -3,6 +3,7 @@ package baloght.tongue.ui.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.TextView;
 
 import javax.inject.Inject;
@@ -19,7 +20,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Inject
     MainMvpPresenter<MainMvpView> presenter;
-
     private TextView username;
 
     @Override
@@ -37,23 +37,29 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void openLoginActivity() {
-        startActivity(new Intent(this, LoginActivity.class));
-        finish();
-    }
-
-    @Override
     public void updateUserName(String userName) {
         username.setText("Welcome " + userName);
     }
 
     @Override
-    public void updateUserEmail(String userEmail) {
+    public void updateUserProfilePic(String userProfilePicUrl) {
 
     }
 
     @Override
-    public void updateUserProfilePic(String userProfilePicUrl) {
+    public void OpenLoginActivity() {
+        startActivity(new Intent(this,LoginActivity.class));
+    }
 
+    public void mainCircleImageView(View v){
+        showMessage("Would you like to change pic?");
+    }
+    public void mainLetsStart(View v){
+        showMessage("lets start");
+    }
+
+    public void mainLogOut(View v){
+        presenter.logout();
+        finish();
     }
 }

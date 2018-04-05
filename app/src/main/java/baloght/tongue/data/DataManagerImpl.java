@@ -49,9 +49,9 @@ public class DataManagerImpl implements DataManager {
     }
 
     @Override
-    public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String email, String profilePicUrl) {
+    public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String usernName, String profilePicUrl) {
         setAccessToken(accessToken);
-        setCurrentUserEmail(email);
+        setCurrentUserName(usernName);
         setCurrentUserLoggedInMode(loggedInMode);
         setCurrentUserProfilePicUrl(profilePicUrl);
     }
@@ -67,13 +67,13 @@ public class DataManagerImpl implements DataManager {
     }
 
     @Override
-    public String getCurrentUserEmail() {
-        return preferencesHelperImpl.getCurrentUserEmail();
+    public String getCurrentUserName() {
+        return preferencesHelperImpl.getCurrentUserName();
     }
 
     @Override
-    public void setCurrentUserEmail(String email) {
-        preferencesHelperImpl.setCurrentUserEmail(email);
+    public void setCurrentUserName(String userName) {
+        preferencesHelperImpl.setCurrentUserName(userName);
     }
 
     @Override
@@ -93,7 +93,8 @@ public class DataManagerImpl implements DataManager {
 
     @Override
     public void setCurrentUserProfilePicUrl(String profilePicUrl) {
-        preferencesHelperImpl.setCurrentUserProfilePicUrl(profilePicUrl);
+        preferencesHelperImpl.setCurrentUserProfilePicUrl(profilePicUrl
+        );
     }
 
     @Override

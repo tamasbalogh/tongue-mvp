@@ -19,7 +19,7 @@ import baloght.tongue.di.PreferenceName;
 public class PreferencesHelperImpl implements PreferencesHelper {
 
     private static final String PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE";
-    private static final String PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_USER_EMAIL";
+    private static final String PREF_KEY_CURRENT_USERNAME = "PREF_KEY_USERNAME";
     private static final String PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN";
     private static final String PREF_KEY_PROFILE_PIC_URL = "PREF_KEY_PROFILE_PIC";
 
@@ -43,13 +43,14 @@ public class PreferencesHelperImpl implements PreferencesHelper {
     }
 
     @Override
-    public String getCurrentUserEmail() {
-        return myPrefs.getString(PREF_KEY_CURRENT_USER_EMAIL, null);
+    public String getCurrentUserName() {
+        return myPrefs.getString(PREF_KEY_CURRENT_USERNAME,null);
+
     }
 
     @Override
-    public void setCurrentUserEmail(String email) {
-        myPrefs.edit().putString(PREF_KEY_CURRENT_USER_EMAIL, email).apply();
+    public void setCurrentUserName(String userName) {
+        myPrefs.edit().putString(PREF_KEY_CURRENT_USERNAME,userName).apply();
     }
 
     @Override
