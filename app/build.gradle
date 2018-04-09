@@ -28,14 +28,18 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     //loop4j
-    compile 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 
     //dagger2
-    compile "com.google.dagger:dagger:2.15"
+    implementation "com.google.dagger:dagger:2.15"
     annotationProcessor "com.google.dagger:dagger-compiler:2.15"
-    provided 'javax.annotation:jsr250-api:1.0'
-    compile 'javax.inject:javax.inject:1'
+    implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
 
     //circleimageview
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //needs to the bottom menu
+    implementation 'com.android.support:design:26.1.0'
+
 }

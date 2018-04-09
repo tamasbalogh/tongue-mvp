@@ -7,10 +7,13 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import javax.inject.Inject;
 import baloght.tongue.data.DataManager;
@@ -80,32 +83,14 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
-
-                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        try {
-                            Log.d("picture","picture");
-                            getDataManager().setCurrentUserName(object.getString("first_name"));
-                        }catch (Exception e){
-                            getMvpView().showMessage(e.toString());
-                        }
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "email,first_name,picture");
-                request.setParameters(parameters);
-                request.executeAsync();
-
-                getDataManager().updateUserInfo(loginResult.getAccessToken().getToken(),
-                        DataManager.LoggedInMode.LOGGED_IN_MODE_FB, getDataManager().getCurrentUserName(),"profilePicURL");
+                setFacebookData(loginResult);
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
             }
 
             @Override
             public void onCancel() {
+                getMvpView().showMessage("cancel");
             }
 
             @Override
@@ -113,5 +98,34 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                 getMvpView().showMessage(error.toString());
             }
         });
+    }
+
+    private void setFacebookData(final LoginResult loginResult){
+
+        GraphRequest request = GraphRequest.newMeRequest(
+                loginResult.getAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+
+                        String firstName = Profile.getCurrentProfile().getFirstName();
+                        String profilePicUrl = Profile.getCurrentProfile().getProfilePictureUri(200,200).toString();
+
+                        Log.d("login - firstname", firstName);
+                        Log.d("login - profilePic", profilePicUrl);
+
+
+                        getDataManager().updateUserInfo(
+                                loginResult.getAccessToken().getToken().toString(),
+                                    DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
+                                    firstName,
+                                    profilePicUrl);
+                    }
+                });
+
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,email,first_name,last_name,gender");
+        request.setParameters(parameters);
+        request.executeAsync();
     }
 }

@@ -3,9 +3,14 @@ package baloght.tongue.ui.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
@@ -27,7 +32,7 @@ import baloght.tongue.utils.ProgressBarUtils;
  * Created by Balogh Tamas on 2018. 04. 01..
  */
 
-public abstract class BaseActivity extends Activity
+public abstract class BaseActivity extends AppCompatActivity
         implements MvpView {
 
     private ProgressBar progressBar;
@@ -74,6 +79,13 @@ public abstract class BaseActivity extends Activity
     }
 
     @Override
+    public void showMessageSnackBar(String message){
+        if (message != null) {
+            showSnackBar(message);
+        }
+    }
+
+    @Override
     public boolean isNetworkConnected() {
         return NetworkUtils.isNetworkConnected(getApplicationContext());
     }
@@ -99,4 +111,15 @@ public abstract class BaseActivity extends Activity
         textView.requestFocus();
         KeyboardUtils.showKeyboard(textView, this);
     }
+
+    private void showSnackBar(String message) {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                message, Snackbar.LENGTH_SHORT);
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView
+                .findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.parseColor("#d4d4d4"));
+        snackbar.show();
+    }
+    protected abstract void setUp();
 }

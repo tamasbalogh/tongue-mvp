@@ -17,6 +17,8 @@ public interface MvpView {
 
     void showMessage(String message);
 
+    void showMessageSnackBar(String message);
+
     boolean isNetworkConnected();
 
     void hideKeyboard();

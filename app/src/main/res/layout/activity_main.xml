@@ -33,35 +33,37 @@
         app:layout_constraintTop_toBottomOf="@+id/mainTextViewUserName"
         android:onClick="mainCircleImageView"/>
 
-    <ImageView
-        android:id="@+id/mainImageViewLogo"
-        style="@style/tongue_logo"
-        android:layout_width="0dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
-
     <Button
         android:id="@+id/mainButtonLetsStart"
         style="@style/buttonStyle"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="mainLetsStart"
         android:text="@string/lets_start"
         app:layout_constraintBottom_toTopOf="@+id/mainImageViewLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainCircleImageViewProfilePic"
-        android:onClick="mainLetsStart"/>
+        app:layout_constraintTop_toBottomOf="@+id/mainCircleImageViewProfilePic" />
 
-    <Button
-        android:id="@+id/mainButtonLogOut"
-        style="@style/buttonStyle"
-        android:layout_marginTop="32dp"
-        android:text="@string/logout"
+    <ImageView
+        android:id="@+id/mainImageViewLogo"
+        style="@style/tongue_logo"
+        android:layout_width="0dp"
+        android:layout_marginBottom="64dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mainBottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/mainBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/background"
+        app:itemIconTint="@color/text"
+        app:itemTextColor="@color/text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainButtonLetsStart"
-        android:onClick="mainLogOut"/>
+        app:menu="@menu/bottom_menu" />
 </android.support.constraint.ConstraintLayout>

@@ -32,10 +32,11 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
         getActivityComponent().inject(this);
         presenter.onAttach(RegisterActivity.this);
-        initViews();
+        setUp();
     }
 
-    private void initViews() {
+    @Override
+    protected void setUp() {
         signUp = findViewById(R.id.registerButtonSignUp);
         email = findViewById(R.id.registerEditTextEmail);
         user = findViewById(R.id.registerEditTextUser);

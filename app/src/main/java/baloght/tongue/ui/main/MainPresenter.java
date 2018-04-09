@@ -23,20 +23,7 @@ public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> impl
     }
 
     @Override
-    public void onAttach(V mvpView) {
-        super.onAttach(mvpView);
-
-        Log.d("token: ",""+getDataManager().getAccessToken());
-        Log.d("username: ",""+getDataManager().getCurrentUserName());
-        Log.d("mode: ", "" + getDataManager().getCurrentUserLoggedInMode());
-        Log.d("picurl: ","" + getDataManager().getCurrentUserProfilePicUrl());
-
-
-        getMvpView().updateUserName(""+getDataManager().getCurrentUserName());
-    }
-
-    @Override
-    public void logout() {
+    public void onLogoutClicked() {
         if (getDataManager().getCurrentUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
             LoginManager.getInstance().logOut();
             getDataManager().setUserAsLoggedOut();
@@ -47,5 +34,16 @@ public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> impl
             getDataManager().setUserAsLoggedOut();
             getMvpView().OpenLoginActivity();
         }
+    }
+
+    @Override
+    public void onLetStartClicked() {
+        getMvpView().OpenGameActivity();
+    }
+
+    @Override
+    public void onViewInitialized() {
+        Log.d("login", "main initialized!!");
+           getMvpView().updateUserName(getDataManager().getCurrentUserName());
     }
 }

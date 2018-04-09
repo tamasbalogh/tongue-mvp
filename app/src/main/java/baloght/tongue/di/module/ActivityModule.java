@@ -2,9 +2,13 @@ package baloght.tongue.di.module;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 
 import baloght.tongue.di.ActivityContext;
 import baloght.tongue.di.PerActivity;
+import baloght.tongue.ui.game.GameMvpPresenter;
+import baloght.tongue.ui.game.GameMvpView;
+import baloght.tongue.ui.game.GamePresenter;
 import baloght.tongue.ui.login.LoginMvpPresenter;
 import baloght.tongue.ui.login.LoginMvpView;
 import baloght.tongue.ui.login.LoginPresenter;
@@ -31,7 +35,7 @@ public class ActivityModule {
 
     private Activity activity;
 
-    public ActivityModule(Activity activity) {
+    public ActivityModule(AppCompatActivity activity) {
         this.activity = activity;
     }
 
@@ -67,6 +71,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     SplashMvpPresenter<SplashMvpView> provideSplashPresenter (SplashPresenter<SplashMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    GameMvpPresenter<GameMvpView> provideGamePresenter (GamePresenter<GameMvpView> presenter){
         return presenter;
     }
 }

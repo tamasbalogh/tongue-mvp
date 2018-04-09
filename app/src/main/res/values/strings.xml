@@ -6,10 +6,13 @@
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="tongue_logo">Tongue Logo</string>
-    <string name="facebook_app_id">2012327285702582</string>
-    <string name="fb_login_protocol_scheme">fb2012327285702582</string>
+    <string name="facebook_app_id">209062766524512</string>
+    <string name="fb_login_protocol_scheme">fb209062766524512</string>
     <string name="welcome">Welcome</string>
     <string name="lets_start">LET\'S START</string>
     <string name="logout">LOG OUT</string>
+    <string name="home">Home</string>
+    <string name="statistics">Statistics</string>
+    <string name="logout2">Log Out</string>
 
 </resources>

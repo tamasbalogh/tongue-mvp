@@ -1,5 +1,7 @@
 package baloght.tongue.ui.splash;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
 import baloght.tongue.data.DataManager;
