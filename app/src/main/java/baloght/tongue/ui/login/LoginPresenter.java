@@ -84,8 +84,6 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
             @Override
             public void onSuccess(LoginResult loginResult) {
                 setFacebookData(loginResult);
-                getMvpView().hideLoading();
-                getMvpView().OpenMainActivity();
             }
 
             @Override
@@ -120,6 +118,9 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                                     DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
                                     firstName,
                                     profilePicUrl);
+
+                        getMvpView().hideLoading();
+                        getMvpView().OpenMainActivity();
                     }
                 });
 

@@ -8,10 +8,9 @@ import android.widget.TextView;
 import javax.inject.Inject;
 
 import baloght.tongue.R;
-import baloght.tongue.game.DragListener;
-import baloght.tongue.game.LongClickListener;
+import baloght.tongue.utils.DragListener;
 import baloght.tongue.ui.base.BaseActivity;
-import baloght.tongue.ui.base.MvpView;
+import baloght.tongue.utils.TouchListener;
 
 
 public class GameActivity extends BaseActivity implements GameMvpView {
@@ -38,8 +37,8 @@ public class GameActivity extends BaseActivity implements GameMvpView {
         imageView1 = findViewById(R.id.gameImageView1);
         textView = findViewById(R.id.gameTextViewTarget);
 
-        imageView0.setOnLongClickListener(new LongClickListener());
-        imageView1.setOnLongClickListener(new LongClickListener());
+        imageView0.setOnTouchListener(new TouchListener());
+        imageView1.setOnTouchListener(new TouchListener());
 
         DragListener dragListener = new DragListener(this, imageView0, imageView1, textView);
         textView.setOnDragListener(dragListener);

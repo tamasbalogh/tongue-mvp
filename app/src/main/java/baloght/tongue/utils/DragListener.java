@@ -1,4 +1,4 @@
-package baloght.tongue.game;
+package baloght.tongue.utils;
 
 import android.content.Context;
 import android.view.DragEvent;
