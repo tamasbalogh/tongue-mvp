@@ -80,22 +80,22 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
 
     @Override
     public void loginWithFacebook(final LoginButton loginButton, CallbackManager callbackManager) {
-
-        getMvpView().showLoading(); // new
-
+        getMvpView().showLoading();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 setFacebookData(loginResult);
-            } // new
+            }
 
             @Override
             public void onCancel() {
+                getMvpView().hideLoading();
                 getMvpView().showMessage("cancel");
             }
 
             @Override
             public void onError(FacebookException error) {
+                getMvpView().hideLoading();
                 getMvpView().showMessage(error.toString());
             }
         });
@@ -122,8 +122,8 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                                     firstName,
                                     profilePicUrl);
 
-                        getMvpView().hideLoading();             // new
-                        getMvpView().OpenMainActivity();        // new
+                        getMvpView().hideLoading();
+                        getMvpView().OpenMainActivity();
                     }
                 });
 

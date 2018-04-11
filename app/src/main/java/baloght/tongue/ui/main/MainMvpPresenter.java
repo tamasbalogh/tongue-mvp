@@ -9,7 +9,7 @@ import baloght.tongue.ui.base.MvpPresenter;
 
 @PerActivity
 public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
-    void onLogoutClicked();
+    /*void onLogoutClicked();
     void onLetStartClicked();
-    void onViewInitialized();
+    void onViewInitialized();*/
 }

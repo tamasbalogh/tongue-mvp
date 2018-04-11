@@ -22,6 +22,8 @@ public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> impl
         super(dataManager);
     }
 
+
+    /*
     @Override
     public void onLogoutClicked() {
         if (getDataManager().getCurrentUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
@@ -45,5 +47,5 @@ public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> impl
     public void onViewInitialized() {
         Log.d("login", "main initialized!!");
            getMvpView().updateUserName(getDataManager().getCurrentUserName());
-    }
+    }*/
 }
