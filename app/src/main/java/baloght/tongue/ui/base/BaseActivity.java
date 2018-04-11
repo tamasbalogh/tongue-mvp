@@ -33,7 +33,7 @@ import baloght.tongue.utils.ProgressBarUtils;
  */
 
 public abstract class BaseActivity extends AppCompatActivity
-        implements MvpView {
+        implements MvpView, BaseFragment.Callback {
 
     private ProgressBar progressBar;
     private ActivityComponent activityComponent;
@@ -121,5 +121,21 @@ public abstract class BaseActivity extends AppCompatActivity
         textView.setTextColor(Color.parseColor("#d4d4d4"));
         snackbar.show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onFragmentAttached() {
+
+    }
+
+    @Override
+    public void onFragmentDetached(String tag) {
+
+    }
+
     protected abstract void setUp();
 }

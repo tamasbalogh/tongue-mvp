@@ -49,7 +49,7 @@ public class ApiHelperImpl implements ApiHelper {
 
     @Override
     public void doLoginWithFacebook(LoginButton loginButton, CallbackManager callbackManager, FacebookCallback<LoginResult> callback) {
-        loginButton.registerCallback(callbackManager,callback);
+         loginButton.registerCallback(callbackManager,callback);
     }
 
     @Override

@@ -6,6 +6,7 @@ import baloght.tongue.di.module.ActivityModule;
 import baloght.tongue.ui.game.GameActivity;
 import baloght.tongue.ui.login.LoginActivity;
 import baloght.tongue.ui.main.MainActivity;
+import baloght.tongue.ui.main.MainFragment;
 import baloght.tongue.ui.register.RegisterActivity;
 import baloght.tongue.ui.splash.SplashActivity;
 import dagger.Component;
@@ -23,4 +24,5 @@ public interface ActivityComponent {
      void inject(MainActivity activity);
      void inject(SplashActivity activity);
      void inject(GameActivity activity);
+     void inject(MainFragment fragment);
 }

@@ -6,16 +6,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-
-import java.security.Permission;
 
 import javax.inject.Inject;
 
@@ -23,7 +17,6 @@ import baloght.tongue.R;
 import baloght.tongue.ui.base.BaseActivity;
 import baloght.tongue.ui.main.MainActivity;
 import baloght.tongue.ui.register.RegisterActivity;
-import baloght.tongue.ui.splash.SplashActivity;
 import baloght.tongue.utils.KeyboardUtils;
 
 /**

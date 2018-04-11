@@ -1,4 +1,5 @@
 package baloght.tongue.ui.login;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -80,11 +81,13 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
     @Override
     public void loginWithFacebook(final LoginButton loginButton, CallbackManager callbackManager) {
 
+        getMvpView().showLoading(); // new
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 setFacebookData(loginResult);
-            }
+            } // new
 
             @Override
             public void onCancel() {
@@ -119,8 +122,8 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                                     firstName,
                                     profilePicUrl);
 
-                        getMvpView().hideLoading();
-                        getMvpView().OpenMainActivity();
+                        getMvpView().hideLoading();             // new
+                        getMvpView().OpenMainActivity();        // new
                     }
                 });
 
