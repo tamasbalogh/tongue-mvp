@@ -2,13 +2,18 @@ package baloght.tongue.ui.main;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.view.MenuItem;
+
 import javax.inject.Inject;
 
 import baloght.tongue.R;
 import baloght.tongue.ui.base.BaseActivity;
-import baloght.tongue.ui.fragments.MainFragment;
+import baloght.tongue.ui.fragment.home.HomeFragment;
+import baloght.tongue.ui.fragment.logout.LogoutDialogFragment;
+import baloght.tongue.ui.fragment.statistics.StatisticsFragment;
 
 /**
  * Created by Balogh Tamas on 2018. 04. 02..
@@ -33,59 +38,48 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     @Override
     protected void setUp() {
         bottomNavigationView = findViewById(R.id.mainBottomNavigation);
-
-        FragmentManager manager = getFragmentManager();
-        android.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.fragment, new MainFragment());
-        transaction.commit();
-
-        //presenter.onViewInitialized();
-        /*bottomNavigationView.setOnNavigationItemSelectedListener(
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_main:
-
+                            case R.id.action_home:
+                                presenter.onHomeMenuClicked();
                                 break;
                             case R.id.action_statistics:
-
+                                presenter.onStatisticsMenuClicked();
                                 break;
                             case R.id.action_logout:
-                                //presenter.onLogoutClicked();
+                                presenter.onLogoutMenuClicked();
                                 break;
                         }
                         return true;
                     }
-                });*/
-    }
-
-    /*
-    @Override
-    public void updateUserName(String userName){
-
+                });
     }
 
     @Override
-    public void updateUserProfilePic(String userProfilePicUrl) { }
-
-    @Override
-    public void OpenLoginActivity() {
-        startActivity(new Intent(this,LoginActivity.class));
-        finish();
+    public void showHomeFragment() {
+        FragmentManager manager = getFragmentManager();
+        android.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment, HomeFragment.newInstance(), HomeFragment.TAG);
+        transaction.commit();
     }
 
     @Override
-    public void OpenGameActivity() {
-        startActivity(new Intent(this,GameActivity.class));
+    public void showStatisticsFragment() {
+        FragmentManager manager = getFragmentManager();
+        android.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment, StatisticsFragment.newInstance(), HomeFragment.TAG);
+        transaction.commit();
     }
 
-    public void mainCircleImageView(View v){
-        showMessage("Would you like to change pic?");
+    @Override
+    public void showLogoutDialog() {
+        FragmentManager manager = getFragmentManager();
+        android.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment, LogoutDialogFragment.newInstance(), HomeFragment.TAG);
+        transaction.commit();
     }
-
-    public void mainLetsStart(View v){
-        presenter.onLetStartClicked();
-    }
-    */
 }

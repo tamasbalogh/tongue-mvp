@@ -42,4 +42,7 @@ dependencies {
     //needs to the bottom menu
     implementation 'com.android.support:design:26.1.0'
 
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
 }

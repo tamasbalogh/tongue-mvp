@@ -1,5 +1,6 @@
 package baloght.tongue.ui.main;
 
+import android.support.design.widget.BottomNavigationView;
 import baloght.tongue.di.PerActivity;
 import baloght.tongue.ui.base.MvpPresenter;
 
@@ -9,6 +10,10 @@ import baloght.tongue.ui.base.MvpPresenter;
 
 @PerActivity
 public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+
+    void onHomeMenuClicked();
+    void onStatisticsMenuClicked();
+    void onLogoutMenuClicked();
     /*void onLogoutClicked();
     void onLetStartClicked();
     void onViewInitialized();*/

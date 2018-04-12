@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
     <TextView
-        android:id="@+id/mainTextViewUserName"
+        android:id="@+id/fragmentHomeTextViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -20,30 +20,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/mainCircleImageViewProfilePic"
+        android:id="@+id/fragmentHomeCircleImageViewProfilePic"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
-        android:onClick="mainCircleImageView"
         android:src="@drawable/avatar"
         app:civ_border_color="@color/text"
         app:civ_border_width="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTextViewUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentHomeTextViewUserName" />
 
     <Button
-        android:id="@+id/mainButtonLetsStart"
+        android:id="@+id/fragmentHomeButtonLetsStart"
         style="@style/buttonStyle"
         android:layout_marginTop="78dp"
-        android:onClick="mainLetsStart"
         android:text="@string/lets_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainCircleImageViewProfilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentHomeCircleImageViewProfilePic" />
 
     <ImageView
-        android:id="@+id/mainImageViewLogo"
+        android:id="@+id/fragmentHomeImageViewLogo"
         style="@style/tongue_logo"
         android:layout_width="336dp"
         android:layout_marginTop="8dp"
@@ -51,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainButtonLetsStart" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentHomeButtonLetsStart" />
 
 
 </android.support.constraint.ConstraintLayout>

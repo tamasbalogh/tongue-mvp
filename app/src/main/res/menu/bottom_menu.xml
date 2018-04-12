@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/action_main"
+        android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_action_home"
         android:title="@string/home"

@@ -1,5 +1,4 @@
 package baloght.tongue.ui.login;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -13,8 +12,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 import javax.inject.Inject;
 import baloght.tongue.data.DataManager;
