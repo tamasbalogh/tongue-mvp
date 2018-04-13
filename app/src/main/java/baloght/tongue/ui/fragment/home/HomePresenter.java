@@ -1,8 +1,22 @@
 package baloght.tongue.ui.fragment.home;
 
+import android.util.Log;
+
+import javax.inject.Inject;
+
+import baloght.tongue.data.DataManager;
+import baloght.tongue.ui.base.BasePresenter;
+
 /**
  * Created by baloght on 2018.04.12..
  */
 
-public class HomePresenter {
+public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> implements HomeMvpPresenter<V> {
+
+    @Inject
+    public HomePresenter(DataManager dataManager) {
+        super(dataManager);
+        Log.d("hompresenter", "iamhere");
+    }
+
 }

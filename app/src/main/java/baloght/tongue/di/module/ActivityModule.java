@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import baloght.tongue.di.ActivityContext;
 import baloght.tongue.di.PerActivity;
+import baloght.tongue.ui.fragment.home.HomeMvpPresenter;
+import baloght.tongue.ui.fragment.home.HomeMvpView;
+import baloght.tongue.ui.fragment.home.HomePresenter;
 import baloght.tongue.ui.game.GameMvpPresenter;
 import baloght.tongue.ui.game.GameMvpView;
 import baloght.tongue.ui.game.GamePresenter;
@@ -77,6 +80,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     GameMvpPresenter<GameMvpView> provideGamePresenter (GamePresenter<GameMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    HomeMvpPresenter<HomeMvpView> provideHomePresenter (HomePresenter<HomeMvpView> presenter){
         return presenter;
     }
 }

@@ -45,7 +45,7 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
             presenter.onAttach(this);
         }
 
-        setUp(getView());
+        setUp(view);
         return view;
     }
 
@@ -58,26 +58,34 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     }
 
     @Override
-    public void onClick(View view) {
-        if(view.getId() == start.getId()){
-            Log.d("homefragment","start test");
-        }
-
-        if(view.getId() == profilePic.getId()){
-            Log.d("homefragment", "profilePic click test");
-        }
-    }
-
-    void setup(){
-
-    }
-
-    @Override
     protected void setUp(View view) {
         start = view.findViewById(R.id.fragmentHomeButtonLetsStart);
         profilePic = view.findViewById(R.id.fragmentHomeCircleImageViewProfilePic);
         username = view.findViewById(R.id.fragmentHomeTextViewUserName);
+
         start.setOnClickListener(this);
         profilePic.setOnClickListener(this);
+        username.setOnClickListener(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.onDetach();
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.fragmentHomeButtonLetsStart){
+            Log.d("homefragment","button");
+        }
+
+        if (v.getId() == R.id.fragmentHomeCircleImageViewProfilePic){
+            Log.d("homefragment","profilepic");
+        }
+
+        if (v.getId() == R.id.fragmentHomeTextViewUserName){
+            Log.d("homefragment","username");
+        }
     }
 }
