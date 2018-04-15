@@ -14,7 +14,5 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
     void onHomeMenuClicked();
     void onStatisticsMenuClicked();
     void onLogoutMenuClicked();
-    /*void onLogoutClicked();
-    void onLetStartClicked();
-    void onViewInitialized();*/
+
 }

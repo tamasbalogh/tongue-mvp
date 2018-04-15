@@ -1,6 +1,9 @@
 package baloght.tongue.ui.fragment.home;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,11 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+
 import javax.inject.Inject;
 
 import baloght.tongue.R;
 import baloght.tongue.di.component.ActivityComponent;
 import baloght.tongue.ui.base.BaseFragment;
+import baloght.tongue.ui.game.GameActivity;
+import baloght.tongue.utils.LogUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -65,7 +72,8 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
 
         start.setOnClickListener(this);
         profilePic.setOnClickListener(this);
-        username.setOnClickListener(this);
+
+        presenter.onViewInitialized();
     }
 
     @Override
@@ -77,15 +85,32 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.fragmentHomeButtonLetsStart){
-            Log.d("homefragment","button");
+            presenter.onLetStartClicked();
         }
 
         if (v.getId() == R.id.fragmentHomeCircleImageViewProfilePic){
-            Log.d("homefragment","profilepic");
+            presenter.onProfilePicClicked();
         }
+    }
 
-        if (v.getId() == R.id.fragmentHomeTextViewUserName){
-            Log.d("homefragment","username");
+    @Override
+    public void updateUserName(String userName) {
+        username.setText("Welcome " + userName);
+    }
+
+    @Override
+    public void updateUserProfilePic(String userProfilePicPath) {
+        File file = new File(userProfilePicPath);
+        if (file.exists()){
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+            profilePic.setImageBitmap(bitmap);
+        } else {
+            LogUtil.log("default pic lodaded");
         }
+    }
+
+    @Override
+    public void OpenGameActivity() {
+        startActivity(new Intent(getActivity(),  GameActivity.class));
     }
 }

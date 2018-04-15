@@ -1,5 +1,7 @@
 package baloght.tongue.ui.main;
 
+import com.facebook.login.LoginManager;
+
 import javax.inject.Inject;
 
 import baloght.tongue.data.DataManager;
@@ -28,33 +30,16 @@ public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> impl
 
     @Override
     public void onLogoutMenuClicked() {
-        getMvpView().showLogoutDialog();
-    }
-
-
-    /*
-    @Override
-    public void onLogoutClicked() {
         if (getDataManager().getCurrentUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
             LoginManager.getInstance().logOut();
             getDataManager().setUserAsLoggedOut();
-            getMvpView().OpenLoginActivity();
+            getMvpView().openLoginActivity();
         }
 
         if (getDataManager().getCurrentUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER.getType()){
             getDataManager().setUserAsLoggedOut();
-            getMvpView().OpenLoginActivity();
+            getMvpView().openLoginActivity();
         }
+        //getMvpView().showLogoutDialog();
     }
-
-    @Override
-    public void onLetStartClicked() {
-        getMvpView().OpenGameActivity();
-    }
-
-    @Override
-    public void onViewInitialized() {
-        Log.d("login", "main initialized!!");
-           getMvpView().updateUserName(getDataManager().getCurrentUserName());
-    }*/
 }

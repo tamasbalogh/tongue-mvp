@@ -9,6 +9,9 @@ import baloght.tongue.di.PerActivity;
 import baloght.tongue.ui.fragment.home.HomeMvpPresenter;
 import baloght.tongue.ui.fragment.home.HomeMvpView;
 import baloght.tongue.ui.fragment.home.HomePresenter;
+import baloght.tongue.ui.fragment.statistics.StatisticsMvpPresenter;
+import baloght.tongue.ui.fragment.statistics.StatisticsMvpView;
+import baloght.tongue.ui.fragment.statistics.StatisticsPresenter;
 import baloght.tongue.ui.game.GameMvpPresenter;
 import baloght.tongue.ui.game.GameMvpView;
 import baloght.tongue.ui.game.GamePresenter;
@@ -86,6 +89,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     HomeMvpPresenter<HomeMvpView> provideHomePresenter (HomePresenter<HomeMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    StatisticsMvpPresenter<StatisticsMvpView> provideStatisticsPresenter (StatisticsPresenter<StatisticsMvpView> presenter){
         return presenter;
     }
 }

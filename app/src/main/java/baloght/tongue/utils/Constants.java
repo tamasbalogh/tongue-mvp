@@ -7,4 +7,5 @@ package baloght.tongue.utils;
 public class Constants {
 
     public static final String PREF_NAME = "tongue_pref";
+    public static final String LOG_TAG = "tongue_mvp";
 }
