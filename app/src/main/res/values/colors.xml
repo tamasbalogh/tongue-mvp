@@ -6,6 +6,8 @@
 
     <color name="text">#d4d4d4</color>
     <color name="background">#373755</color>
+    <color name="background_dark">#2a2a40</color>
     <color name="buttons">#747474</color>
     <color name="statusbar">#20202D</color>
+
 </resources>

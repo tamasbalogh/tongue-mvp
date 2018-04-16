@@ -70,8 +70,8 @@ public class StatisticsFragment extends BaseFragment implements StatisticsMvpVie
     private void setPieChart() {
         List<PieEntry> entries;
         entries = new ArrayList<>();
-        entries.add(new PieEntry(1500));
-        entries.add(new PieEntry(3500));
+        entries.add(new PieEntry(1000,"Known Words"));
+        entries.add(new PieEntry(3000, "Unknown Words"));
 
         PieDataSet dataSet = new PieDataSet(entries,"");
         PieData pieData = new PieData(dataSet);
@@ -82,5 +82,17 @@ public class StatisticsFragment extends BaseFragment implements StatisticsMvpVie
         chart.setData(pieData);
         chart.setHoleColor(getResources().getColor(R.color.background));
         chart.animateY(2000);
+        chart.getDescription().setEnabled(false);
+        //Known words, Total words
+        chart.setDrawEntryLabels(false);
+        chart.getLegend().setEnabled(false);
+        chart.setCenterText("25%");
+        chart.setCenterTextSizePixels(100);
+    }
+
+    private String calculateCenterPercentage(int known, int unknown){
+        int sum = known + unknown;
+        double percentage = known / sum;
+        return (percentage * 100) + " %";
     }
 }
