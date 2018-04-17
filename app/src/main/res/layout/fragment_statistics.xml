@@ -99,36 +99,43 @@
         <TableRow
             android:background="@color/background_dark">
             <ImageView
+                android:id="@+id/dayIndicator1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_true"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/dayIndicator2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_false"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/dayIndicator3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_false"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/dayIndicator4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_false"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/dayIndicator5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_false"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/dayIndicator6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_false"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/dayIndicator7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/day_indicator_false"
@@ -137,30 +144,37 @@
         <TableRow
             android:background="@color/background_dark">
             <TextView
+                android:id="@+id/dayCounter1"
                 style="@style/performance_day"
                 android:text="1"
                 />
             <TextView
+                android:id="@+id/dayCounter2"
                 style="@style/performance_day"
                 android:text="0"
                 />
             <TextView
+                android:id="@+id/dayCounter3"
                 style="@style/performance_day"
                 android:text="0"
                 />
             <TextView
+                android:id="@+id/dayCounter4"
                 style="@style/performance_day"
                 android:text="0"
                 />
             <TextView
+                android:id="@+id/dayCounter5"
                 style="@style/performance_day"
                 android:text="0"
                 />
             <TextView
+                android:id="@+id/dayCounter6"
                 style="@style/performance_day"
                 android:text="0"
                 />
             <TextView
+                android:id="@+id/dayCounter7"
                 style="@style/performance_day"
                 android:text="0"
                 />
