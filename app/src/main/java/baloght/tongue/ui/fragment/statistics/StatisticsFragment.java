@@ -1,11 +1,13 @@
 package baloght.tongue.ui.fragment.statistics;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
@@ -15,14 +17,21 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import baloght.tongue.BuildConfig;
 import baloght.tongue.R;
 import baloght.tongue.Tongue;
+import baloght.tongue.di.ActivityContext;
+import baloght.tongue.di.ApplicationContext;
 import baloght.tongue.di.component.ActivityComponent;
 import baloght.tongue.ui.base.BaseFragment;
+import baloght.tongue.utils.DateUtils;
+import baloght.tongue.utils.LogUtil;
 
 /**
  * Created by baloght on 2018.04.12..
@@ -33,9 +42,9 @@ public class StatisticsFragment extends BaseFragment implements StatisticsMvpVie
     @Inject
     StatisticsMvpPresenter<StatisticsMvpView> presenter;
 
-
     public static final String TAG = "StatisticsFragment";
     private PieChart chart;
+    private ImageView dayPointer;
 
 
     @Nullable
@@ -47,6 +56,10 @@ public class StatisticsFragment extends BaseFragment implements StatisticsMvpVie
         if (component != null) {
             component.inject(this);
             presenter.onAttach(this);
+        }
+
+        for ( String date: DateUtils.getDatesOfWeek()) {
+            LogUtil.log(date);
         }
 
         setUp(view);
@@ -65,6 +78,7 @@ public class StatisticsFragment extends BaseFragment implements StatisticsMvpVie
     protected void setUp(View view) {
         chart = view.findViewById(R.id.fragmentStatisticsPieChart);
         setPieChart();
+        showDayPointer(view);
     }
 
     private void setPieChart() {
@@ -94,5 +108,12 @@ public class StatisticsFragment extends BaseFragment implements StatisticsMvpVie
         int sum = known + unknown;
         double percentage = known / sum;
         return (percentage * 100) + " %";
+    }
+
+    private void showDayPointer(View view){
+        String name = "dayPointer" + DateUtils.getDayOfWeek();
+        int id = getResources().getIdentifier(name,"id", BuildConfig.APPLICATION_ID);
+        dayPointer = (ImageView) view.findViewById(id);
+        dayPointer.setVisibility(View.VISIBLE);
     }
 }

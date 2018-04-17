@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <TableRow
-            android:background="@color/background"
+            android:background="@color/background_dark"
             android:padding="10dp">
             <TextView
                 android:textSize="24sp"
@@ -26,72 +26,57 @@
         <TableRow
             android:background="@color/background_dark">
             <ImageView
-                android:id="@+id/dayPoiner1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer1"
+                style="@style/performance_day_imageview_pointer"/>
             <ImageView
-                android:id="@+id/dayPoiner2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/day_pointer"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer2"
+                style="@style/performance_day_imageview_pointer"/>
             <ImageView
-                android:id="@+id/dayPoiner3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer3"
+                style="@style/performance_day_imageview_pointer"/>
             <ImageView
-                android:id="@+id/dayPoiner4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer4"
+                style="@style/performance_day_imageview_pointer"/>
             <ImageView
-                android:id="@+id/dayPoiner5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer5"
+                style="@style/performance_day_imageview_pointer"/>
             <ImageView
-                android:id="@+id/dayPoiner6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer6"
+                style="@style/performance_day_imageview_pointer"/>
             <ImageView
-                android:id="@+id/dayPoiner7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:id="@+id/dayPointer7"
+                style="@style/performance_day_imageview_pointer"/>
 
         </TableRow>
 
         <TableRow
             android:background="@color/background_dark">
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="Mo"
                 />
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="Tu"
                 />
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="We"
                 />
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="Th"
                 />
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="Fr"
                 />
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="Sa"
                 />
             <TextView
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="Su"
                 />
         </TableRow>
@@ -145,37 +130,37 @@
             android:background="@color/background_dark">
             <TextView
                 android:id="@+id/dayCounter1"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="1"
                 />
             <TextView
                 android:id="@+id/dayCounter2"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="0"
                 />
             <TextView
                 android:id="@+id/dayCounter3"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="0"
                 />
             <TextView
                 android:id="@+id/dayCounter4"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="0"
                 />
             <TextView
                 android:id="@+id/dayCounter5"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="0"
                 />
             <TextView
                 android:id="@+id/dayCounter6"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="0"
                 />
             <TextView
                 android:id="@+id/dayCounter7"
-                style="@style/performance_day"
+                style="@style/performance_day_textview"
                 android:text="0"
                 />
         </TableRow>
