@@ -86,11 +86,4 @@ public class DateUtils {
         return dateFormat.format(date);
     }
 
-    public static int getWeekOfYear(){
-        Date now = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        return calendar.get(Calendar.WEEK_OF_YEAR);
-    }
-
 }
