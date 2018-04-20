@@ -1,6 +1,7 @@
 package baloght.tongue.utils;
 
 import android.content.ClipData;
+import android.support.constraint.ConstraintLayout;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -10,8 +11,39 @@ import android.view.View;
 
 public class TouchListener implements View.OnTouchListener {
 
+    ConstraintLayout constraintLayout;
+
+    public TouchListener(ConstraintLayout constraintLayout) {
+        this.constraintLayout = constraintLayout;
+    }
+
+
+
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
+
+        int lWidth = constraintLayout.getMeasuredWidth();
+        int lHeight = constraintLayout.getMeasuredHeight();
+
+        float baseXofView = 0;
+        float baseYofView = 0;
+
+        switch (motionEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                baseXofView = lWidth - view.getPivotX();
+                baseYofView = lWidth - view.getPivotY();
+
+                return true;
+            case MotionEvent.ACTION_UP:
+                view.setPivotX(baseXofView);
+                view.setPivotY(baseYofView);
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+
+
+                break;
+        }
 
         //ClipData clipData = ClipData.newPlainText("","");
         //View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
