@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.inject.Inject;
 
@@ -100,13 +103,19 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
 
     @Override
     public void updateUserProfilePic(String userProfilePicPath) {
-        File file = new File(userProfilePicPath);
-        if (file.exists()){
-            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-            profilePic.setImageBitmap(bitmap);
-        } else {
-            LogUtil.log("default pic lodaded");
+        URL url = null;
+        try {
+            url = new URL(userProfilePicPath);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
+        Bitmap bmp = null;
+        try {
+            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        profilePic.setImageBitmap(bmp);
     }
 
     @Override

@@ -24,20 +24,25 @@ public class DragListener implements View.OnDragListener {
 
     @Override
     public boolean onDrag(View v, DragEvent event) {
+        View view = (View) event.getLocalState();
         switch (event.getAction()){
             case DragEvent.ACTION_DRAG_ENTERED:
-                final View view = (View) event.getLocalState();
+                LogUtil.log("draglistener entered");
+                break;
+            case DragEvent.ACTION_DROP:
+                LogUtil.log("draglistener drop");
                 if(view.getId() == R.id.gameImageView0) {
                     Toast.makeText(context, "true", Toast.LENGTH_SHORT).show();
-                } else if(view.getId() == R.id.gameImageView1){
+                }
+
+                if(view.getId() == R.id.gameImageView1){
                     Toast.makeText(context, "false", Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case DragEvent.ACTION_DRAG_EXITED:
-
+            case DragEvent.ACTION_DRAG_ENDED:
+                view.setVisibility(View.VISIBLE);
+                LogUtil.log("draglistener ended");
                 break;
-            case DragEvent.ACTION_DROP:
-
         }
         return true;
     }
