@@ -1,6 +1,7 @@
 package baloght.tongue.data;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.facebook.CallbackManager;
@@ -14,6 +15,8 @@ import com.loopj.android.http.RequestParams;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import baloght.tongue.data.image.ImageHandler;
+import baloght.tongue.data.image.ImageHandlerImpl;
 import baloght.tongue.data.network.ApiHelperImpl;
 import baloght.tongue.data.prefs.PreferencesHelperImpl;
 import baloght.tongue.di.ApplicationContext;
@@ -28,14 +31,17 @@ public class DataManagerImpl implements DataManager {
     private final Context context;
     private final PreferencesHelperImpl preferencesHelperImpl;
     private final ApiHelperImpl apiHelperImpl;
+    private final ImageHandlerImpl imageHandler;
 
     @Inject
     public DataManagerImpl(@ApplicationContext Context context,
                            PreferencesHelperImpl preferencesHelperImpl,
-                           ApiHelperImpl apiHelper) {
+                           ApiHelperImpl apiHelper,
+                           ImageHandlerImpl imageHandler) {
         this.context = context;
         this.preferencesHelperImpl = preferencesHelperImpl;
         this.apiHelperImpl = apiHelper;
+        this.imageHandler = imageHandler;
     }
 
 
@@ -117,4 +123,34 @@ public class DataManagerImpl implements DataManager {
         apiHelperImpl.getUserData(token,asyncHttpResponseHandler);
     }
 
+
+    @Override
+    public Bitmap downloadBitmapImage(String url) {
+        return imageHandler.downloadBitmapImage(url);
+    }
+
+    @Override
+    public void saveImage(Bitmap bitmap) {
+        imageHandler.saveImage(bitmap);
+    }
+
+    @Override
+    public Bitmap loadImage(String imageName) {
+        return imageHandler.loadImage(imageName);
+    }
+
+    @Override
+    public String getImagePath(String imageName) {
+        return imageHandler.getImagePath(imageName);
+    }
+
+    @Override
+    public boolean isFileExists(String imageName) {
+        return imageHandler.isFileExists(imageName);
+    }
+
+    @Override
+    public void deleteImage(String imageName) {
+        imageHandler.deleteImage(imageName);
+    }
 }

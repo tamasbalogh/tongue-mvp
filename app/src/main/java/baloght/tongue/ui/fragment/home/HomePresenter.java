@@ -32,5 +32,6 @@ public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> imp
     @Override
     public void onViewInitialized() {
         getMvpView().updateUserName(getDataManager().getCurrentUserName());
+        getMvpView().updateUserProfilePic(getDataManager().loadImage("profile_pic.png"));
     }
 }

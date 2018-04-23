@@ -102,20 +102,8 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     }
 
     @Override
-    public void updateUserProfilePic(String userProfilePicPath) {
-        URL url = null;
-        try {
-            url = new URL(userProfilePicPath);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        Bitmap bmp = null;
-        try {
-            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        profilePic.setImageBitmap(bmp);
+    public void updateUserProfilePic(Bitmap bitmap) {
+        profilePic.setImageBitmap(bitmap);
     }
 
     @Override

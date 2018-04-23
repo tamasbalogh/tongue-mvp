@@ -1,5 +1,6 @@
 package baloght.tongue.ui.fragment.home;
 
+import android.graphics.Bitmap;
 import android.view.View;
 
 import baloght.tongue.ui.base.MvpView;
@@ -10,6 +11,6 @@ import baloght.tongue.ui.base.MvpView;
 
 public interface HomeMvpView extends MvpView, View.OnClickListener {
     void updateUserName(String userName);
-    void updateUserProfilePic(String userProfilePicPath);
+    void updateUserProfilePic(Bitmap bitmap);
     void OpenGameActivity();
 }

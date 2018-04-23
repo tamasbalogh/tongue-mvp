@@ -112,6 +112,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                         Log.d("login - firstname", firstName);
                         Log.d("login - profilePic", profilePicUrl);
 
+                        getDataManager().downloadBitmapImage(profilePicUrl);
 
                         getDataManager().updateUserInfo(
                                 loginResult.getAccessToken().getToken().toString(),

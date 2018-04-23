@@ -33,7 +33,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //generateKeyHash();
+        generateKeyHash();
 
         getActivityComponent().inject(this);
         mPresenter.onAttach(SplashActivity.this);
