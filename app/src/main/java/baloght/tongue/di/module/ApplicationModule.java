@@ -9,7 +9,6 @@ import javax.inject.Singleton;
 
 import baloght.tongue.data.DataManager;
 import baloght.tongue.data.DataManagerImpl;
-import baloght.tongue.data.image.ImageHandler;
 import baloght.tongue.data.network.ApiHelper;
 import baloght.tongue.data.network.ApiHelperImpl;
 import baloght.tongue.data.prefs.PreferencesHelper;
@@ -73,11 +72,5 @@ public class ApplicationModule {
     @Singleton
     ApiHelper provideApiHelper(ApiHelperImpl apiHelperImpl){
         return apiHelperImpl;
-    }
-
-    @Provides
-    @Singleton
-    ImageHandler provideImageHandler(ImageHandler imageHandler){
-        return imageHandler;
     }
 }

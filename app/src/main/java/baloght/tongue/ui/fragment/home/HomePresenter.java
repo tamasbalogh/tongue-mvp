@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import baloght.tongue.data.DataManager;
 import baloght.tongue.ui.base.BasePresenter;
+import baloght.tongue.utils.ImageHandler;
 import baloght.tongue.utils.LogUtil;
 
 /**
@@ -34,5 +35,6 @@ public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> imp
     @Override
     public void onViewInitialized() {
         getMvpView().updateUserName(getDataManager().getCurrentUserName());
+        getMvpView().updateUserProfilePic(getDataManager().getCurrentUserProfilePicUrl());
     }
 }

@@ -1,24 +1,18 @@
 package baloght.tongue.ui.fragment.home;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.squareup.picasso.Target;
 
 import javax.inject.Inject;
 
@@ -26,7 +20,7 @@ import baloght.tongue.R;
 import baloght.tongue.di.component.ActivityComponent;
 import baloght.tongue.ui.base.BaseFragment;
 import baloght.tongue.ui.game.GameActivity;
-import baloght.tongue.utils.LogUtil;
+import baloght.tongue.utils.ImageHandler;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -41,6 +35,8 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     Button start;
     CircleImageView profilePic;
     TextView username;
+    ProgressBar progressBar;
+    Picasso.Builder builder;
 
     public static final String TAG = "HomeFragment";
 
@@ -74,6 +70,9 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
         start = view.findViewById(R.id.fragmentHomeButtonLetsStart);
         profilePic = view.findViewById(R.id.fragmentHomeCircleImageViewProfilePic);
         username = view.findViewById(R.id.fragmentHomeTextViewUserName);
+        progressBar= view.findViewById(R.id.fragmentHomeProgressBar);
+
+        builder = new Picasso.Builder(view.getContext());
 
         start.setOnClickListener(this);
         profilePic.setOnClickListener(this);
@@ -104,8 +103,10 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     }
 
     @Override
-    public void updateUserProfilePic(Bitmap bitmap) {
-        profilePic.setImageBitmap(bitmap);
+    public void updateUserProfilePic(String url) {
+         Picasso p = builder.build();
+         p.load(url).into(profilePic);
+       // new ImageHandler(progressBar, profilePic).execute(url);
     }
 
     @Override

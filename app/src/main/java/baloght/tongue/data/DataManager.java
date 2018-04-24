@@ -1,5 +1,4 @@
 package baloght.tongue.data;
-import baloght.tongue.data.image.ImageHandler;
 import baloght.tongue.data.network.ApiHelper;
 import baloght.tongue.data.prefs.PreferencesHelper;
 
@@ -7,7 +6,7 @@ import baloght.tongue.data.prefs.PreferencesHelper;
  * Created by Balogh Tamas on 2018. 04. 01..
  */
 
-public interface DataManager extends PreferencesHelper, ApiHelper, ImageHandler{
+public interface DataManager extends PreferencesHelper, ApiHelper{
 
     void setUserAsLoggedOut();
 

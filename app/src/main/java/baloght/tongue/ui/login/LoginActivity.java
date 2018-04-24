@@ -40,6 +40,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
         getActivityComponent().inject(this);
         presenter.onAttach(LoginActivity.this);
+
         setUp();
     }
 

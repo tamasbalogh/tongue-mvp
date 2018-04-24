@@ -13,12 +13,15 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
+
+import java.net.URL;
+
 import javax.inject.Inject;
 import baloght.tongue.data.DataManager;
 import baloght.tongue.ui.base.BasePresenter;
+import baloght.tongue.utils.LogUtil;
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -109,15 +112,8 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
 
-                        if (Profile.getCurrentProfile() != null){
-
                             String firstName = Profile.getCurrentProfile().getFirstName();
                             String profilePicUrl = Profile.getCurrentProfile().getProfilePictureUri(200,200).toString();
-
-                            Log.d("login - firstname", firstName);
-                            Log.d("login - profilePic", profilePicUrl);
-
-                            getDataManager().downloadBitmap(profilePicUrl);
 
                             getDataManager().updateUserInfo(
                                     loginResult.getAccessToken().getToken().toString(),
@@ -125,29 +121,11 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                                     firstName,
                                     profilePicUrl);
 
+                            LogUtil.log("login - firstname " + firstName);
+                            LogUtil.log("login - profilpicurl " + profilePicUrl);
+
                             getMvpView().hideLoading();
                             getMvpView().OpenMainActivity();
-                        } else {
-                            final ProfileTracker profileTracker = new ProfileTracker() {
-                                @Override
-                                protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
-                                    String firstName = currentProfile.getFirstName();
-                                    String profilePicUrl = Profile.getCurrentProfile().getProfilePictureUri(200,200).toString();
-
-                                    getDataManager().downloadBitmap(profilePicUrl);
-
-                                    getDataManager().updateUserInfo(
-                                            loginResult.getAccessToken().getToken().toString(),
-                                            DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
-                                            firstName,
-                                            profilePicUrl);
-
-                                    getMvpView().hideLoading();
-                                    getMvpView().OpenMainActivity();
-                                }
-                            };
-                        }
-
                     }
                 });
 
