@@ -8,10 +8,13 @@ import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONObject;
 import javax.inject.Inject;
 import baloght.tongue.data.DataManager;
@@ -106,22 +109,45 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
 
-                        String firstName = Profile.getCurrentProfile().getFirstName();
-                        String profilePicUrl = Profile.getCurrentProfile().getProfilePictureUri(200,200).toString();
+                        if (Profile.getCurrentProfile() != null){
 
-                        Log.d("login - firstname", firstName);
-                        Log.d("login - profilePic", profilePicUrl);
+                            String firstName = Profile.getCurrentProfile().getFirstName();
+                            String profilePicUrl = Profile.getCurrentProfile().getProfilePictureUri(200,200).toString();
 
-                        getDataManager().downloadBitmapImage(profilePicUrl);
+                            Log.d("login - firstname", firstName);
+                            Log.d("login - profilePic", profilePicUrl);
 
-                        getDataManager().updateUserInfo(
-                                loginResult.getAccessToken().getToken().toString(),
+                            getDataManager().downloadBitmap(profilePicUrl);
+
+                            getDataManager().updateUserInfo(
+                                    loginResult.getAccessToken().getToken().toString(),
                                     DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
                                     firstName,
                                     profilePicUrl);
 
-                        getMvpView().hideLoading();
-                        getMvpView().OpenMainActivity();
+                            getMvpView().hideLoading();
+                            getMvpView().OpenMainActivity();
+                        } else {
+                            final ProfileTracker profileTracker = new ProfileTracker() {
+                                @Override
+                                protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                                    String firstName = currentProfile.getFirstName();
+                                    String profilePicUrl = Profile.getCurrentProfile().getProfilePictureUri(200,200).toString();
+
+                                    getDataManager().downloadBitmap(profilePicUrl);
+
+                                    getDataManager().updateUserInfo(
+                                            loginResult.getAccessToken().getToken().toString(),
+                                            DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
+                                            firstName,
+                                            profilePicUrl);
+
+                                    getMvpView().hideLoading();
+                                    getMvpView().OpenMainActivity();
+                                }
+                            };
+                        }
+
                     }
                 });
 

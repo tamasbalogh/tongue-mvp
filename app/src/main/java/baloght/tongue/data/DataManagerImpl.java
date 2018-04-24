@@ -123,15 +123,14 @@ public class DataManagerImpl implements DataManager {
         apiHelperImpl.getUserData(token,asyncHttpResponseHandler);
     }
 
-
     @Override
-    public Bitmap downloadBitmapImage(String url) {
-        return imageHandler.downloadBitmapImage(url);
+    public String saveProfilePic(Bitmap bitmap) {
+        return imageHandler.saveProfilePic(bitmap);
     }
 
     @Override
-    public void saveImage(Bitmap bitmap) {
-        imageHandler.saveImage(bitmap);
+    public Bitmap downloadBitmap(String url) {
+        return imageHandler.downloadBitmap(url);
     }
 
     @Override

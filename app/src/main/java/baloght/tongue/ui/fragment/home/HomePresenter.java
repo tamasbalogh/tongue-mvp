@@ -2,6 +2,8 @@ package baloght.tongue.ui.fragment.home;
 
 import android.util.Log;
 
+import com.squareup.picasso.Picasso;
+
 import javax.inject.Inject;
 
 import baloght.tongue.data.DataManager;
@@ -32,6 +34,5 @@ public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> imp
     @Override
     public void onViewInitialized() {
         getMvpView().updateUserName(getDataManager().getCurrentUserName());
-        getMvpView().updateUserProfilePic(getDataManager().loadImage("profile_pic.png"));
     }
 }
