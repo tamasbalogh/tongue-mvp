@@ -34,7 +34,16 @@ public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> imp
 
     @Override
     public void onViewInitialized() {
-        getMvpView().updateUserName(getDataManager().getCurrentUserName());
-        getMvpView().updateUserProfilePic(getDataManager().getCurrentUserProfilePicUrl());
+
+        //logged in with fb
+        if(getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
+            getMvpView().updateUserName(getDataManager().getUserName());
+        }
+
+        //logged in with server
+        if(getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
+
+        }
+
     }
 }

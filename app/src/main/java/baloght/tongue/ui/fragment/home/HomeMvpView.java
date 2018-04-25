@@ -10,6 +10,7 @@ import baloght.tongue.ui.base.MvpView;
  */
 
 public interface HomeMvpView extends MvpView, View.OnClickListener {
+    String getFileDir();
     void updateUserName(String userName);
     void updateUserProfilePic(String url);
     void OpenGameActivity();

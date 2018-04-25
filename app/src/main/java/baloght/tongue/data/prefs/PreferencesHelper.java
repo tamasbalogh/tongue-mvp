@@ -8,19 +8,24 @@ import baloght.tongue.data.DataManager;
 
 public interface PreferencesHelper {
 
-    int getCurrentUserLoggedInMode();
+    int getUserLoggedInMode();
 
-    void setCurrentUserLoggedInMode(DataManager.LoggedInMode mode);
+    void setUserLoggedInMode(DataManager.LoggedInMode mode);
 
-    String getCurrentUserName();
+    String getUserName();
 
-    void setCurrentUserName(String userName);
+    void setUserName(String userName);
 
     String getAccessToken();
 
     void setAccessToken(String accessToken);
 
-    String getCurrentUserProfilePicUrl();
+    String getUserProfilePicUrl();
 
-    void setCurrentUserProfilePicUrl(String profilePicUrl);
+    void setUserProfilePicUrl(String profilePicUrl);
+
+    String getStoredProfilePicPath();
+
+    void setStoredProfilePicPath(String profilePicPath);
+
 }

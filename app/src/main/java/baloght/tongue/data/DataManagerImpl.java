@@ -46,29 +46,29 @@ public class DataManagerImpl implements DataManager {
     @Override
     public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String usernName, String profilePicUrl) {
         setAccessToken(accessToken);
-        setCurrentUserName(usernName);
-        setCurrentUserLoggedInMode(loggedInMode);
-        setCurrentUserProfilePicUrl(profilePicUrl);
+        setUserName(usernName);
+        setUserLoggedInMode(loggedInMode);
+        setUserProfilePicUrl(profilePicUrl);
     }
 
     @Override
-    public int getCurrentUserLoggedInMode() {
-        return preferencesHelperImpl.getCurrentUserLoggedInMode();
+    public int getUserLoggedInMode() {
+        return preferencesHelperImpl.getUserLoggedInMode();
     }
 
     @Override
-    public void setCurrentUserLoggedInMode(LoggedInMode mode) {
-        preferencesHelperImpl.setCurrentUserLoggedInMode(mode);
+    public void setUserLoggedInMode(LoggedInMode mode) {
+        preferencesHelperImpl.setUserLoggedInMode(mode);
     }
 
     @Override
-    public String getCurrentUserName() {
-        return preferencesHelperImpl.getCurrentUserName();
+    public String getUserName() {
+        return preferencesHelperImpl.getUserName();
     }
 
     @Override
-    public void setCurrentUserName(String userName) {
-        preferencesHelperImpl.setCurrentUserName(userName);
+    public void setUserName(String userName) {
+        preferencesHelperImpl.setUserName(userName);
     }
 
     @Override
@@ -82,14 +82,23 @@ public class DataManagerImpl implements DataManager {
     }
 
     @Override
-    public String getCurrentUserProfilePicUrl() {
-        return preferencesHelperImpl.getCurrentUserProfilePicUrl();
+    public String getUserProfilePicUrl() {
+        return preferencesHelperImpl.getUserProfilePicUrl();
     }
 
     @Override
-    public void setCurrentUserProfilePicUrl(String profilePicUrl) {
-        preferencesHelperImpl.setCurrentUserProfilePicUrl(profilePicUrl
-        );
+    public void setUserProfilePicUrl(String profilePicUrl) {
+        preferencesHelperImpl.setUserProfilePicUrl(profilePicUrl);
+    }
+
+    @Override
+    public String getStoredProfilePicPath() {
+        return preferencesHelperImpl.getStoredProfilePicPath();
+    }
+
+    @Override
+    public void setStoredProfilePicPath(String profilePicPath) {
+        preferencesHelperImpl.setStoredProfilePicPath(profilePicPath);
     }
 
     @Override
@@ -111,4 +120,6 @@ public class DataManagerImpl implements DataManager {
     public void getUserData(String token, AsyncHttpResponseHandler asyncHttpResponseHandler) {
         apiHelperImpl.getUserData(token,asyncHttpResponseHandler);
     }
+
+
 }

@@ -66,8 +66,8 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
 
         if(bitmap!=null){
             ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
-            File file = wrapper.getDir("Images",MODE_PRIVATE);
-            file = new File(file, "UniqueFileName"+".jpg");
+            File file = wrapper.getDir("images",MODE_PRIVATE);
+            file = new File(file, Constants.PROFILE_PIC_NAME);
             try{
                 OutputStream stream = null;
                 stream = new FileOutputStream(file);
@@ -78,7 +78,6 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
             {
                 e.printStackTrace();
             }
-
             imageView.setImageURI(Uri.parse(file.getAbsolutePath()));
             LogUtil.log("postexecute - " + file.getAbsolutePath());
 

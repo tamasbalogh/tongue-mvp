@@ -30,13 +30,13 @@ public class MainPresenter <V extends MainMvpView> extends BasePresenter<V> impl
 
     @Override
     public void onLogoutMenuClicked() {
-        if (getDataManager().getCurrentUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
+        if (getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
             LoginManager.getInstance().logOut();
             getDataManager().setUserAsLoggedOut();
             getMvpView().openLoginActivity();
         }
 
-        if (getDataManager().getCurrentUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER.getType()){
+        if (getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER.getType()){
             getDataManager().setUserAsLoggedOut();
             getMvpView().openLoginActivity();
         }

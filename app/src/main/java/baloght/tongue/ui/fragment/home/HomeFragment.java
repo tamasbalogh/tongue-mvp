@@ -1,5 +1,6 @@
 package baloght.tongue.ui.fragment.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -112,5 +113,10 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     @Override
     public void OpenGameActivity() {
         startActivity(new Intent(getActivity(),  GameActivity.class));
+    }
+
+    @Override
+    public String getFileDir() {
+        return getFileDir();
     }
 }
