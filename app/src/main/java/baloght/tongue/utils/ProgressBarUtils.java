@@ -9,7 +9,6 @@ import android.widget.ProgressBar;
  */
 
 public class ProgressBarUtils {
-
     public static void showProgressBar(ProgressBar progressBar){
         progressBar.setVisibility(View.VISIBLE);
     }
@@ -17,5 +16,4 @@ public class ProgressBarUtils {
     public static void hideProgressBar(ProgressBar progressBar){
         progressBar.setVisibility(View.GONE);
     }
-
 }

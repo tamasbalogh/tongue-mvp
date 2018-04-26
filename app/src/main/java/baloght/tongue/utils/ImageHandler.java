@@ -23,12 +23,17 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
 
+
     ProgressBar progressBar;
     ImageView imageView;
+    String imageName;
+    public AsyncResponse delegate;
 
-    public ImageHandler(ProgressBar progressBar, ImageView imageView) {
+    public ImageHandler(String imageName, ProgressBar progressBar, ImageView imageView, AsyncResponse delegate) {
+        this.imageName = imageName;
         this.progressBar = progressBar;
         this.imageView = imageView;
+        this.delegate = delegate;
     }
 
     @Override
@@ -66,8 +71,9 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
 
         if(bitmap!=null){
             ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
+
             File file = wrapper.getDir("images",MODE_PRIVATE);
-            file = new File(file, Constants.PROFILE_PIC_NAME);
+            file = new File(file, imageName);
             try{
                 OutputStream stream = null;
                 stream = new FileOutputStream(file);
@@ -79,12 +85,21 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
                 e.printStackTrace();
             }
             imageView.setImageURI(Uri.parse(file.getAbsolutePath()));
-            LogUtil.log("postexecute - " + file.getAbsolutePath());
+
+            if (file.isFile()){
+                delegate.processFinish(file.getAbsolutePath());
+            } else {
+                delegate.processFinish(null);
+            }
 
         }else {
             imageView.setImageResource(R.drawable.avatar);
             LogUtil.log("An error occurd while downloading image ");
         }
+    }
+
+    public interface AsyncResponse{
+        void processFinish(String output);
     }
 
 }

@@ -72,16 +72,9 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public void showMessage(String message) {
         if (message != null) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Some Error Occurd", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void showMessageSnackBar(String message){
-        if (message != null) {
             showSnackBar(message);
+        } else {
+            showSnackBar("Some Error Occurd");
         }
     }
 

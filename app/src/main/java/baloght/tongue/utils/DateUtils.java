@@ -72,7 +72,7 @@ public class DateUtils {
             dayOfWeek--;
         }
 
-        //Save dates of current week (from monday to sunday)
+        //Save dates of the current week (from monday to sunday)
         for(int i =0; i < 7 ; i++){
             datesOfWeek[i]= dateFormat.format(cal.getTime());
             cal.add(Calendar.DATE, +1);

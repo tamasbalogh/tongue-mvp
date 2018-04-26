@@ -57,13 +57,6 @@ public abstract class  BaseFragment extends Fragment implements MvpView{
     }
 
     @Override
-    public void showMessageSnackBar(String message) {
-        if(activity != null){
-            activity.showMessageSnackBar(message);
-        }
-    }
-
-    @Override
     public void onDetach() {
         activity = null;
         super.onDetach();

@@ -14,7 +14,8 @@ public interface DataManager extends PreferencesHelper, ApiHelper{
             String accessToken,
             LoggedInMode loggedInMode,
             String userName,
-            String profilePicUrl);
+            String profilePicUrl,
+            String storedProfilePicPath);
 
     enum LoggedInMode {
 

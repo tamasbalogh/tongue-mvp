@@ -68,7 +68,8 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 getDataManager().updateUserInfo("asdASDSasdUgHGHJKlKKLlklLllkK2u12fjkasdlfa3oda81341klFASdslésdf",
                         DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
-                        "testuser",
+                        email.getText().toString(),
+                        null,
                         null);
                 getMvpView().hideLoading();
                 getMvpView().OpenMainActivity();
@@ -119,7 +120,8 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                                     loginResult.getAccessToken().getToken().toString(),
                                     DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
                                     firstName,
-                                    profilePicUrl);
+                                    profilePicUrl,
+                                    null);
 
                             LogUtil.log("login - firstname " + firstName);
                             LogUtil.log("login - profilpicurl " + profilePicUrl);
@@ -133,5 +135,13 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
         parameters.putString("fields", "id,email,first_name,last_name,gender");
         request.setParameters(parameters);
         request.executeAsync();
+    }
+
+    private String getUserNamefromEmail(String email){
+        if(email.contains("@")){
+            return email.substring(0,email.indexOf("@"));
+        } else {
+            return email;
+        }
     }
 }

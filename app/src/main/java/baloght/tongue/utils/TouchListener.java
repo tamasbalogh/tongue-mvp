@@ -1,18 +1,14 @@
 package baloght.tongue.utils;
 
 import android.content.ClipData;
-import android.support.constraint.ConstraintLayout;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 
 /**
  * Created by baloght on 2018.04.10..
  */
 
 public class TouchListener implements View.OnTouchListener {
-
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {

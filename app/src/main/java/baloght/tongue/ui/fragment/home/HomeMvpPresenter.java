@@ -10,6 +10,8 @@ import baloght.tongue.ui.login.LoginMvpView;
 
 @PerActivity
 public interface HomeMvpPresenter <V extends HomeMvpView> extends MvpPresenter<V> {
+
+    void saveProfilePicPath(String path);
     void onProfilePicClicked();
     void onLetStartClicked();
     void onViewInitialized();

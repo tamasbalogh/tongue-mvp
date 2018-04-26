@@ -1,8 +1,10 @@
 package baloght.tongue.ui.fragment.home;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,14 +17,22 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.io.File;
+
 import javax.inject.Inject;
 
 import baloght.tongue.R;
+import baloght.tongue.data.DataManager;
 import baloght.tongue.di.component.ActivityComponent;
 import baloght.tongue.ui.base.BaseFragment;
 import baloght.tongue.ui.game.GameActivity;
+import baloght.tongue.utils.Constants;
 import baloght.tongue.utils.ImageHandler;
+import baloght.tongue.utils.LogUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by baloght on 2018.04.11..
@@ -37,7 +47,6 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     CircleImageView profilePic;
     TextView username;
     ProgressBar progressBar;
-    Picasso.Builder builder;
 
     public static final String TAG = "HomeFragment";
 
@@ -53,6 +62,8 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
             component.inject(this);
             presenter.onAttach(this);
         }
+
+        LogUtil.log("HomeFragment oncreateview");
 
         setUp(view);
         return view;
@@ -72,8 +83,6 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
         profilePic = view.findViewById(R.id.fragmentHomeCircleImageViewProfilePic);
         username = view.findViewById(R.id.fragmentHomeTextViewUserName);
         progressBar= view.findViewById(R.id.fragmentHomeProgressBar);
-
-        builder = new Picasso.Builder(view.getContext());
 
         start.setOnClickListener(this);
         profilePic.setOnClickListener(this);
@@ -104,10 +113,23 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     }
 
     @Override
-    public void updateUserProfilePic(String url) {
-         Picasso p = builder.build();
-         p.load(url).into(profilePic);
-       // new ImageHandler(progressBar, profilePic).execute(url);
+    public void updateUserProfilePic(DataManager.LoggedInMode mode, String profilePicUrl, String storedPicPath) {
+
+        if(storedPicPath != null){
+            profilePic.setImageURI(Uri.parse(storedPicPath));
+        }
+
+        if(mode == DataManager.LoggedInMode.LOGGED_IN_MODE_FB && storedPicPath == null){
+            new ImageHandler(Constants.PROFILE_PIC_NAME,
+                    progressBar,
+                    profilePic,
+                    this).execute(profilePicUrl);
+        }
+
+        if(mode == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER && storedPicPath == null) {
+            profilePic.setImageDrawable(getResources().getDrawable(R.drawable.avatar));
+        }
+
     }
 
     @Override
@@ -116,7 +138,8 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
     }
 
     @Override
-    public String getFileDir() {
-        return getFileDir();
+    public void processFinish(String output) {
+        LogUtil.log("path of the downloaded image: " + output);
+        presenter.saveProfilePicPath(output);
     }
 }

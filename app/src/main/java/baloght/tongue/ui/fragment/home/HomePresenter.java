@@ -23,8 +23,13 @@ public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> imp
     }
 
     @Override
-    public void onProfilePicClicked() {
+    public void saveProfilePicPath(String path) {
+        getDataManager().setStoredProfilePicPath(path);
+    }
 
+    @Override
+    public void onProfilePicClicked() {
+        getMvpView().showMessage("Would you like to change profile picture?");
     }
 
     @Override
@@ -38,11 +43,17 @@ public class HomePresenter <V extends HomeMvpView>  extends BasePresenter<V> imp
         //logged in with fb
         if(getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
             getMvpView().updateUserName(getDataManager().getUserName());
+            getMvpView().updateUserProfilePic(DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
+                    getDataManager().getUserProfilePicUrl(),
+                    getDataManager().getStoredProfilePicPath());
         }
 
         //logged in with server
-        if(getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_FB.getType()){
-
+        if(getDataManager().getUserLoggedInMode() == DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER.getType()){
+            getMvpView().updateUserName(getDataManager().getUserName());
+            getMvpView().updateUserProfilePic(DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
+                    getDataManager().getUserProfilePicUrl(),
+                    getDataManager().getStoredProfilePicPath());
         }
 
     }

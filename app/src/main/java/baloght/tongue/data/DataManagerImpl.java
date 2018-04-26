@@ -40,15 +40,17 @@ public class DataManagerImpl implements DataManager {
                 null,
                 LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
                 null,
+                null,
                 null);
     }
 
     @Override
-    public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String usernName, String profilePicUrl) {
+    public void updateUserInfo(String accessToken, LoggedInMode loggedInMode,String usernName, String profilePicUrl, String storedProfilePicPath) {
         setAccessToken(accessToken);
         setUserName(usernName);
         setUserLoggedInMode(loggedInMode);
         setUserProfilePicUrl(profilePicUrl);
+        setStoredProfilePicPath(storedProfilePicPath);
     }
 
     @Override
