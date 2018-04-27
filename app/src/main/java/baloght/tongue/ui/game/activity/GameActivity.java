@@ -1,18 +1,20 @@
-package baloght.tongue.ui.game;
+package baloght.tongue.ui.game.activity;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import javax.inject.Inject;
 
 import baloght.tongue.R;
-import baloght.tongue.utils.DragListener;
+import baloght.tongue.ui.fragment.home.HomeFragment;
+import baloght.tongue.ui.game.fragment.GameFragment;
+import baloght.tongue.utils.GameUtils.DragListener;
 import baloght.tongue.ui.base.BaseActivity;
-import baloght.tongue.utils.TouchListener;
+import baloght.tongue.utils.GameUtils.TouchListener;
 
 
 public class GameActivity extends BaseActivity implements GameMvpView {
@@ -52,5 +54,13 @@ public class GameActivity extends BaseActivity implements GameMvpView {
     protected void onDestroy() {
         presenter.onDetach();
         super.onDestroy();
+    }
+
+    @Override
+    public void showGameFragment() {
+        FragmentManager manager = getFragmentManager();
+        android.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment_game, GameFragment.newInstance(), GameFragment.TAG);
+        transaction.commit();
     }
 }

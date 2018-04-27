@@ -5,7 +5,8 @@ import baloght.tongue.di.PerActivity;
 import baloght.tongue.di.module.ActivityModule;
 import baloght.tongue.ui.fragment.home.HomeFragment;
 import baloght.tongue.ui.fragment.statistics.StatisticsFragment;
-import baloght.tongue.ui.game.GameActivity;
+import baloght.tongue.ui.game.activity.GameActivity;
+import baloght.tongue.ui.game.fragment.GameFragment;
 import baloght.tongue.ui.login.LoginActivity;
 import baloght.tongue.ui.main.MainActivity;
 import baloght.tongue.ui.register.RegisterActivity;
@@ -27,4 +28,5 @@ public interface ActivityComponent {
      void inject(GameActivity activity);
      void inject(HomeFragment fragment);
      void inject(StatisticsFragment fragment);
+     void inject(GameFragment fragment);
 }

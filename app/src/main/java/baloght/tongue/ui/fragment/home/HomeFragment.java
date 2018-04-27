@@ -1,9 +1,6 @@
 package baloght.tongue.ui.fragment.home;
 
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,26 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-import java.io.File;
-
 import javax.inject.Inject;
-
 import baloght.tongue.R;
 import baloght.tongue.data.DataManager;
 import baloght.tongue.di.component.ActivityComponent;
 import baloght.tongue.ui.base.BaseFragment;
-import baloght.tongue.ui.game.GameActivity;
+import baloght.tongue.ui.game.activity.GameActivity;
 import baloght.tongue.utils.Constants;
 import baloght.tongue.utils.ImageHandler;
 import baloght.tongue.utils.LogUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.content.Context.MODE_PRIVATE;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by baloght on 2018.04.11..
@@ -62,8 +49,6 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
             component.inject(this);
             presenter.onAttach(this);
         }
-
-        LogUtil.log("HomeFragment oncreateview");
 
         setUp(view);
         return view;

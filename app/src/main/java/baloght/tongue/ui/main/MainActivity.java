@@ -16,7 +16,6 @@ import baloght.tongue.ui.fragment.home.HomeFragment;
 import baloght.tongue.ui.fragment.logout.LogoutDialogFragment;
 import baloght.tongue.ui.fragment.statistics.StatisticsFragment;
 import baloght.tongue.ui.login.LoginActivity;
-import baloght.tongue.utils.LogUtil;
 
 /**
  * Created by Balogh Tamas on 2018. 04. 02..
@@ -70,7 +69,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     public void showHomeFragment() {
         FragmentManager manager = getFragmentManager();
         android.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.fragment, HomeFragment.newInstance(), HomeFragment.TAG);
+        transaction.add(R.id.fragment_main, HomeFragment.newInstance(), HomeFragment.TAG);
         transaction.commit();
     }
 
@@ -78,7 +77,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     public void showStatisticsFragment() {
         FragmentManager manager = getFragmentManager();
         android.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment, StatisticsFragment.newInstance(), StatisticsFragment.TAG);
+        transaction.replace(R.id.fragment_main, StatisticsFragment.newInstance(), StatisticsFragment.TAG);
         transaction.commit();
     }
 
@@ -86,7 +85,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     public void showLogoutDialog() {
         FragmentManager manager = getFragmentManager();
         android.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment, LogoutDialogFragment.newInstance(), LogoutDialogFragment.TAG);
+        transaction.replace(R.id.fragment_main, LogoutDialogFragment.newInstance(), LogoutDialogFragment.TAG);
         transaction.commit();
     }
 

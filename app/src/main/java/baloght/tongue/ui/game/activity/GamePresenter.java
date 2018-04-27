@@ -1,4 +1,4 @@
-package baloght.tongue.ui.game;
+package baloght.tongue.ui.game.activity;
 
 import javax.inject.Inject;
 

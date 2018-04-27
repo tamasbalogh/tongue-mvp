@@ -18,6 +18,7 @@ import baloght.tongue.R;
 import baloght.tongue.ui.base.BaseActivity;
 import baloght.tongue.ui.login.LoginActivity;
 import baloght.tongue.ui.main.MainActivity;
+import baloght.tongue.utils.LoadJSON;
 
 /**
  * Created by baloght on 2018.04.04..
@@ -37,6 +38,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
         getActivityComponent().inject(this);
         mPresenter.onAttach(SplashActivity.this);
+
         setUp();
     }
 

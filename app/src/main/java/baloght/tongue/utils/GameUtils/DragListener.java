@@ -1,4 +1,4 @@
-package baloght.tongue.utils;
+package baloght.tongue.utils.GameUtils;
 
 import android.content.Context;
 import android.view.DragEvent;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import baloght.tongue.R;
+import baloght.tongue.utils.LogUtil;
 
 public class DragListener implements View.OnDragListener {
 

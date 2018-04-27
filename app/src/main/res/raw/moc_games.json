@@ -1,0 +1,57 @@
+{
+  "games" : [
+    {
+      "gametype":0,
+      "image1":"https://images.vexels.com/media/users/3/143051/isolated/preview/7c640e541176de78cabefc799ad3efac-apple-color-stroke-icon-by-vexels.png" ,
+      "image2":"https://images.vexels.com/media/users/3/143061/isolated/preview/aaf71ed4e387a6838e1c521fbecde77a-banana-icon-fruit-by-vexels.png",
+      "word":"apple",
+      "answer":"image1"
+    },
+    {
+      "gametype":1,
+      "image": "",
+      "answer":["A","P","P","L","E"],
+      "characters":["E","A","L","P","Z","P","R"]
+    },
+    {
+      "gametype":0,
+      "image1":"https://images.vexels.com/media/users/3/130931/isolated/preview/4aad185fdd2bb243482b6f30f64738c1-hipster-bicycle-3-by-vexels.png" ,
+      "image2":"https://images.vexels.com/media/users/3/137965/isolated/preview/4416be26173d8f9e0408e8980c39be51-car-transport-silhouette-by-vexels.png",
+      "word":"car",
+      "answer":"image2"
+    },
+    {
+      "gametype":2,
+      "image": "",
+      "answerlength": 5,
+      "characters":[
+        {"first":"D","second":"A","third":"R","answer":1},
+        {"first":"P","second":"K","third":"L","answer":0},
+        {"first":"C","second":"P","third":"O","answer":1},
+        {"first":"F","second":"A","third":"L","answer":2},
+        {"first":"E","second":"A","third":"R","answer":0}
+      ]
+    },
+    {
+      "gametype":0,
+      "image1":"https://images.vexels.com/media/users/3/144864/isolated/preview/39b3cf9bcc3acbc5a085b85185617190-boy-waving-illustration-by-vexels.png" ,
+      "image2":"https://images.vexels.com/media/users/3/144971/isolated/preview/9d7812794f5983b08be544d142f764a9-girl-going-school-illustration-by-vexels.png",
+      "word":"boy",
+      "answer":"image1"
+    },
+    {
+      "gametype":0,
+      "image1":"https://images.vexels.com/media/users/3/128105/isolated/preview/dc1ccf636ee9507ca3b3756564be4660-isometric-flat-house-building-by-vexels.png",
+      "image2":"https://images.vexels.com/media/users/3/129738/isolated/preview/8810c93e6357c194080ab761e9035245-catholic-church-icon-by-vexels.png",
+      "word":"church",
+      "answer":"image2"
+    },
+    {
+      "gametype":0,
+      "image1":"https://images.vexels.com/media/users/3/147750/isolated/preview/c592d94e9f2d5c7c6260842092514363-digital-camera-graphic-by-vexels.png",
+      "image2":"https://images.vexels.com/media/users/3/136866/isolated/preview/17022b67dc66deb1adabc9e975b75767-smartphone-phone-message-icon-by-vexels.png",
+      "word":"phone",
+      "answer":"image2"
+    }
+  ]
+}

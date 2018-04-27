@@ -1,8 +1,10 @@
-package baloght.tongue.utils;
+package baloght.tongue.utils.GameUtils;
 
 import android.content.ClipData;
 import android.view.MotionEvent;
 import android.view.View;
+
+import baloght.tongue.utils.LogUtil;
 
 /**
  * Created by baloght on 2018.04.10..

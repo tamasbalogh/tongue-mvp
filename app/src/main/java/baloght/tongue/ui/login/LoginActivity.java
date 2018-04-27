@@ -11,6 +11,10 @@ import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.inject.Inject;
 
 import baloght.tongue.R;
@@ -18,6 +22,8 @@ import baloght.tongue.ui.base.BaseActivity;
 import baloght.tongue.ui.main.MainActivity;
 import baloght.tongue.ui.register.RegisterActivity;
 import baloght.tongue.utils.KeyboardUtils;
+import baloght.tongue.utils.LoadJSON;
+import baloght.tongue.utils.LogUtil;
 
 /**
  * Created by baloght on 2018.03.12..
@@ -40,6 +46,19 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
         getActivityComponent().inject(this);
         presenter.onAttach(LoginActivity.this);
+
+
+        try {
+            JSONArray games = new JSONArray(LoadJSON.loadJsonGames(this));
+            for (int i = 0; i <  games.length(); i++) {
+                JSONObject object = games.getJSONObject(i);
+                LogUtil.log(object.toString());
+                if(object.getInt("gametype") == 0 )
+                    LogUtil.log(object.getString("word"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         setUp();
     }
