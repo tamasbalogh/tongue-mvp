@@ -47,19 +47,6 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         getActivityComponent().inject(this);
         presenter.onAttach(LoginActivity.this);
 
-
-        try {
-            JSONArray games = new JSONArray(LoadJSON.loadJsonGames(this));
-            for (int i = 0; i <  games.length(); i++) {
-                JSONObject object = games.getJSONObject(i);
-                LogUtil.log(object.toString());
-                if(object.getInt("gametype") == 0 )
-                    LogUtil.log(object.getString("word"));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
         setUp();
     }
 

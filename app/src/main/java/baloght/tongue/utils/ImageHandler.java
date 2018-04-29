@@ -38,7 +38,8 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPreExecute() {
-        progressBar.setVisibility(View.VISIBLE);
+        if(progressBar != null)
+            progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -67,7 +68,8 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
 
-        progressBar.setVisibility(View.INVISIBLE);
+        if(progressBar != null)
+            progressBar.setVisibility(View.INVISIBLE);
 
         if(bitmap!=null){
             ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
@@ -84,7 +86,8 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
             {
                 e.printStackTrace();
             }
-            imageView.setImageURI(Uri.parse(file.getAbsolutePath()));
+            if(imageView != null)
+                imageView.setImageURI(Uri.parse(file.getAbsolutePath()));
 
             if (file.isFile()){
                 delegate.processFinish(file.getAbsolutePath());
@@ -93,8 +96,10 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
             }
 
         }else {
-            imageView.setImageResource(R.drawable.avatar);
-            LogUtil.log("An error occurd while downloading image ");
+            if (imageView != null) {
+                imageView.setImageResource(R.drawable.avatar);
+                LogUtil.log("An error occurd while downloading image ");
+            }
         }
     }
 
