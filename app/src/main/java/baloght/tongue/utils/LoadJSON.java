@@ -22,7 +22,7 @@ import baloght.tongue.utils.GameUtils.BaseGame;
 
 public class LoadJSON {
 
-    public static String loadJsonGames(Context context) {
+    public static String loadJsonObjectFromFile(Context context) {
         String json = null;
         try {
             InputStream is = context.getResources().openRawResource(R.raw.moc_games);

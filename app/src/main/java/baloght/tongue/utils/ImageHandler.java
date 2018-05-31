@@ -36,15 +36,22 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
         this.delegate = delegate;
     }
 
+    public ImageHandler(String imageName, AsyncResponse delegate) {
+        this.imageName = imageName;
+        this.delegate = delegate;
+        this.progressBar = null;
+        this.imageView = null;
+    }
+
     @Override
     protected void onPreExecute() {
-        if(progressBar != null)
+        if(progressBar != null) {
             progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     protected Bitmap doInBackground(String... urls) {
-
         URL url;
         Bitmap bitmap = null;
         HttpURLConnection connection = null;
@@ -68,26 +75,29 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
 
-        if(progressBar != null)
+        if(progressBar != null) {
             progressBar.setVisibility(View.INVISIBLE);
+        }
 
         if(bitmap!=null){
             ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
 
-            File file = wrapper.getDir("images",MODE_PRIVATE);
-            file = new File(file, imageName);
+            File file = wrapper.getDir(Constants.NAME_OF_IMAGE_FOLDER,MODE_PRIVATE);
+            file = new File(file, this.imageName);
             try{
                 OutputStream stream = null;
                 stream = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+                bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
                 stream.flush();
                 stream.close();
             }catch (Exception e)
             {
                 e.printStackTrace();
             }
-            if(imageView != null)
+
+            if(imageView != null) {
                 imageView.setImageURI(Uri.parse(file.getAbsolutePath()));
+            }
 
             if (file.isFile()){
                 delegate.processFinish(file.getAbsolutePath());
@@ -106,5 +116,4 @@ public class ImageHandler extends AsyncTask<String, Void, Bitmap> {
     public interface AsyncResponse{
         void processFinish(String output);
     }
-
 }

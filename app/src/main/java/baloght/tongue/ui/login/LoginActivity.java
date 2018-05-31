@@ -2,6 +2,7 @@ package baloght.tongue.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
@@ -48,6 +49,11 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         presenter.onAttach(LoginActivity.this);
 
         setUp();
+
+        if (savedInstanceState != null ){
+            email.setText(savedInstanceState.getString("email"));
+            password.setText(savedInstanceState.getString("password"));
+        }
     }
 
     @Override
@@ -64,6 +70,13 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putString("email", email.getText().toString());
+        outState.putString("password", password.getText().toString());
     }
 
     public void layoutOnClick(View v) {

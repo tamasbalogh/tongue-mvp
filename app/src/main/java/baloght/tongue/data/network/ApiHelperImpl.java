@@ -24,7 +24,7 @@ public class ApiHelperImpl implements ApiHelper {
     @Inject
     public ApiHelperImpl(@AsyncClient AsyncHttpClient client) {
         this.client = client;
-        this.client.setMaxRetriesAndTimeout(3, 500);
+        this.client.setMaxRetriesAndTimeout(3, 1000);
     }
 
 
@@ -57,4 +57,5 @@ public class ApiHelperImpl implements ApiHelper {
         setAccesToken(token);
         client.get(ApiEndpoint.MAINPAGE,asyncHttpResponseHandler);
     }
+
 }

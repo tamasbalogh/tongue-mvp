@@ -1,4 +1,4 @@
-package baloght.tongue.ui.game.fragment;
+package baloght.tongue.ui.game.fragment.desertgame;
 
 import baloght.tongue.di.PerActivity;
 import baloght.tongue.ui.base.MvpPresenter;
@@ -8,6 +8,6 @@ import baloght.tongue.ui.base.MvpPresenter;
  */
 
 @PerActivity
-public interface GameFMvpPresenter<V extends GameFMvpView> extends MvpPresenter<V> {
+public interface DesertMvpPresenter<V extends DesertMvpView> extends MvpPresenter<V> {
 
 }

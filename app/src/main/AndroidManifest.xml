@@ -45,7 +45,7 @@
         <activity android:name=".ui.login.LoginActivity"/>
         <activity android:name=".ui.register.RegisterActivity"/>
         <activity android:name=".ui.main.MainActivity"/>
-        <activity android:name=".ui.game.activity.GameActivity"/>
+        <activity android:name=".ui.game.GameActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

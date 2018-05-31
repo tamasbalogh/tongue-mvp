@@ -64,6 +64,7 @@ public class RegisterPresenter <V extends RegisterMvpView> extends BasePresenter
 
             @Override
             public void onRetry(int retryNo) {
+                if(retryNo != 0)
                 getMvpView().showMessage("Request retry no. " +  retryNo + "/3");
             }
         });

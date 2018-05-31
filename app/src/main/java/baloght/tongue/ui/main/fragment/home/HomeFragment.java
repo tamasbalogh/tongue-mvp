@@ -1,4 +1,4 @@
-package baloght.tongue.ui.fragment.home;
+package baloght.tongue.ui.main.fragment.home;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -15,7 +15,9 @@ import baloght.tongue.R;
 import baloght.tongue.data.DataManager;
 import baloght.tongue.di.component.ActivityComponent;
 import baloght.tongue.ui.base.BaseFragment;
-import baloght.tongue.ui.game.activity.GameActivity;
+import baloght.tongue.ui.fragment.home.HomeMvpPresenter;
+import baloght.tongue.ui.fragment.home.HomeMvpView;
+import baloght.tongue.ui.game.GameActivity;
 import baloght.tongue.utils.Constants;
 import baloght.tongue.utils.ImageHandler;
 import baloght.tongue.utils.LogUtil;
@@ -25,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by baloght on 2018.04.11..
  */
 
-public class HomeFragment extends BaseFragment implements HomeMvpView{
+public class HomeFragment extends BaseFragment implements HomeMvpView {
 
     @Inject
     HomeMvpPresenter<HomeMvpView> presenter;
@@ -50,7 +52,7 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
             presenter.onAttach(this);
         }
 
-        setUp(view);
+        LogUtil.log("HomeFragment is loading...");
         return view;
     }
 
@@ -64,6 +66,7 @@ public class HomeFragment extends BaseFragment implements HomeMvpView{
 
     @Override
     protected void setUp(View view) {
+        LogUtil.log("HomeFragment setUp function is called...");
         start = view.findViewById(R.id.fragmentHomeButtonLetsStart);
         profilePic = view.findViewById(R.id.fragmentHomeCircleImageViewProfilePic);
         username = view.findViewById(R.id.fragmentHomeTextViewUserName);

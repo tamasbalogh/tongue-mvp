@@ -7,15 +7,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
-
 import javax.inject.Inject;
-
 import baloght.tongue.R;
 import baloght.tongue.ui.base.BaseActivity;
-import baloght.tongue.ui.fragment.home.HomeFragment;
 import baloght.tongue.ui.fragment.logout.LogoutDialogFragment;
-import baloght.tongue.ui.fragment.statistics.StatisticsFragment;
 import baloght.tongue.ui.login.LoginActivity;
+import baloght.tongue.ui.main.fragment.home.HomeFragment;
+import baloght.tongue.ui.main.fragment.statistics.StatisticsFragment;
 
 /**
  * Created by Balogh Tamas on 2018. 04. 02..
@@ -25,7 +23,9 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Inject
     MainMvpPresenter<MainMvpView> presenter;
-    BottomNavigationView bottomNavigationView;
+
+    private BottomNavigationView bottomNavigationView;
+    private FragmentManager manager = getFragmentManager();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,10 +51,14 @@ public class MainActivity extends BaseActivity implements MainMvpView{
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_home:
-                                presenter.onHomeMenuClicked();
+                                if(bottomNavigationView.getSelectedItemId()!=R.id.action_home){
+                                    presenter.onHomeMenuClicked();
+                                }
                                 break;
                             case R.id.action_statistics:
-                                presenter.onStatisticsMenuClicked();
+                                if(bottomNavigationView.getSelectedItemId()!=R.id.action_statistics) {
+                                    presenter.onStatisticsMenuClicked();
+                                }
                                 break;
                             case R.id.action_logout:
                                 presenter.onLogoutMenuClicked();
@@ -67,15 +71,13 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Override
     public void showHomeFragment() {
-        FragmentManager manager = getFragmentManager();
         android.app.FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.fragment_main, HomeFragment.newInstance(), HomeFragment.TAG);
+        transaction.replace(R.id.fragment_main, HomeFragment.newInstance(), HomeFragment.TAG);
         transaction.commit();
     }
 
     @Override
     public void showStatisticsFragment() {
-        FragmentManager manager = getFragmentManager();
         android.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_main, StatisticsFragment.newInstance(), StatisticsFragment.TAG);
         transaction.commit();
@@ -83,7 +85,6 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Override
     public void showLogoutDialog() {
-        FragmentManager manager = getFragmentManager();
         android.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_main, LogoutDialogFragment.newInstance(), LogoutDialogFragment.TAG);
         transaction.commit();

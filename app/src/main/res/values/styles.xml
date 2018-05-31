@@ -49,7 +49,7 @@
         <item name="android:contentDescription">@string/tongue_logo</item>
     </style>
 
-    <style name="performance_day_textview">
+    <style name="daily_performance_textview">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
@@ -59,7 +59,7 @@
         <item name="android:padding">5dp</item>
     </style>
 
-    <style name="performance_day_imageview_pointer">
+    <style name="daily_performance_imageview_pointer">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:src">@drawable/day_pointer</item>

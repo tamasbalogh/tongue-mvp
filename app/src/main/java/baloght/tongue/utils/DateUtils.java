@@ -81,7 +81,7 @@ public class DateUtils {
         return datesOfWeek;
     }
 
-    private static String getToday(){
+    public static String getToday(){
         Date date = new Date();
         return dateFormat.format(date);
     }

@@ -3,12 +3,13 @@ package baloght.tongue.di.component;
 
 import baloght.tongue.di.PerActivity;
 import baloght.tongue.di.module.ActivityModule;
-import baloght.tongue.ui.fragment.home.HomeFragment;
-import baloght.tongue.ui.fragment.statistics.StatisticsFragment;
-import baloght.tongue.ui.game.activity.GameActivity;
-import baloght.tongue.ui.game.fragment.GameFragment;
+import baloght.tongue.ui.game.GameActivity;
+import baloght.tongue.ui.game.fragment.desertgame.DesertFragment;
+import baloght.tongue.ui.game.fragment.result.ResultFragment;
 import baloght.tongue.ui.login.LoginActivity;
 import baloght.tongue.ui.main.MainActivity;
+import baloght.tongue.ui.main.fragment.home.HomeFragment;
+import baloght.tongue.ui.main.fragment.statistics.StatisticsFragment;
 import baloght.tongue.ui.register.RegisterActivity;
 import baloght.tongue.ui.splash.SplashActivity;
 import dagger.Component;
@@ -28,5 +29,6 @@ public interface ActivityComponent {
      void inject(GameActivity activity);
      void inject(HomeFragment fragment);
      void inject(StatisticsFragment fragment);
-     void inject(GameFragment fragment);
+     void inject(DesertFragment fragment);
+     void inject(ResultFragment fragment);
 }

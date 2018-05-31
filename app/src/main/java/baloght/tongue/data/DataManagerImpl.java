@@ -7,8 +7,14 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import baloght.tongue.data.db.DatabaseHelper;
+import baloght.tongue.data.db.Statistics;
 import baloght.tongue.data.network.ApiHelperImpl;
 import baloght.tongue.data.prefs.PreferencesHelperImpl;
 import baloght.tongue.di.ApplicationContext;
@@ -23,14 +29,18 @@ public class DataManagerImpl implements DataManager {
     private final Context context;
     private final PreferencesHelperImpl preferencesHelperImpl;
     private final ApiHelperImpl apiHelperImpl;
+    private final DatabaseHelper databaseHelper;
+
 
     @Inject
     public DataManagerImpl(@ApplicationContext Context context,
                            PreferencesHelperImpl preferencesHelperImpl,
-                           ApiHelperImpl apiHelper) {
+                           ApiHelperImpl apiHelper,
+                           DatabaseHelper databaseHelper) {
         this.context = context;
         this.preferencesHelperImpl = preferencesHelperImpl;
         this.apiHelperImpl = apiHelper;
+        this.databaseHelper = databaseHelper;
     }
 
 
@@ -124,4 +134,28 @@ public class DataManagerImpl implements DataManager {
     }
 
 
+    @Override
+    public Statistics getStatisticsById(long id) {
+        return databaseHelper.getStatisticsById(id);
+    }
+
+    @Override
+    public List<Statistics> getAllStatistics() {
+        return databaseHelper.getAllStatistics();
+    }
+
+    @Override
+    public int getNumberOfGamesByDate(String date) {
+        return databaseHelper.getNumberOfGamesByDate(date);
+    }
+
+    @Override
+    public long insertStatistics(Statistics statistics) {
+        return databaseHelper.insertStatistics(statistics);
+    }
+
+    @Override
+    public void deleteAllStatistics() {
+        databaseHelper.deleteAllStatistics();
+    }
 }

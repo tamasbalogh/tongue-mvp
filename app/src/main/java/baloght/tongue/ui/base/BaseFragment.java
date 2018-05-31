@@ -88,22 +88,29 @@ public abstract class  BaseFragment extends Fragment implements MvpView{
 
     @Override
     public void showLoading() {
-
+        if (activity != null) {
+            activity.showLoading();
+        }
     }
 
     @Override
     public void hideLoading() {
-
+        if (activity != null) {
+            activity.hideLoading();
+        }
     }
 
     @Override
     public void hideKeyboard() {
-
+        if (activity != null) {
+            activity.hideKeyboard();
+        }
     }
-
 
     @Override
     public void warnUser(TextView textView) {
-
+        if (activity != null) {
+            activity.warnUser(textView);
+        }
     }
 }

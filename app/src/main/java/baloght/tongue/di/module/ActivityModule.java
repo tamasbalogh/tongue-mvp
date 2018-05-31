@@ -9,21 +9,24 @@ import baloght.tongue.di.PerActivity;
 import baloght.tongue.ui.fragment.home.HomeMvpPresenter;
 import baloght.tongue.ui.fragment.home.HomeMvpView;
 import baloght.tongue.ui.fragment.home.HomePresenter;
-import baloght.tongue.ui.fragment.statistics.StatisticsMvpPresenter;
 import baloght.tongue.ui.fragment.statistics.StatisticsMvpView;
-import baloght.tongue.ui.fragment.statistics.StatisticsPresenter;
-import baloght.tongue.ui.game.activity.GameMvpPresenter;
-import baloght.tongue.ui.game.activity.GameMvpView;
-import baloght.tongue.ui.game.activity.GamePresenter;
-import baloght.tongue.ui.game.fragment.GameFMvpPresenter;
-import baloght.tongue.ui.game.fragment.GameFMvpView;
-import baloght.tongue.ui.game.fragment.GameFPresenter;
+import baloght.tongue.ui.game.GameMvpPresenter;
+import baloght.tongue.ui.game.GameMvpView;
+import baloght.tongue.ui.game.GamePresenter;
+import baloght.tongue.ui.game.fragment.desertgame.DesertMvpView;
+import baloght.tongue.ui.game.fragment.desertgame.DesertPresenter;
+import baloght.tongue.ui.game.fragment.desertgame.DesertMvpPresenter;
+import baloght.tongue.ui.game.fragment.result.ResultMvpPresenter;
+import baloght.tongue.ui.game.fragment.result.ResultMvpView;
+import baloght.tongue.ui.game.fragment.result.ResultPresenter;
 import baloght.tongue.ui.login.LoginMvpPresenter;
 import baloght.tongue.ui.login.LoginMvpView;
 import baloght.tongue.ui.login.LoginPresenter;
 import baloght.tongue.ui.main.MainMvpPresenter;
 import baloght.tongue.ui.main.MainMvpView;
 import baloght.tongue.ui.main.MainPresenter;
+import baloght.tongue.ui.main.fragment.statistics.StatisticsMvpPresenter;
+import baloght.tongue.ui.main.fragment.statistics.StatisticsPresenter;
 import baloght.tongue.ui.register.RegisterMvpPresenter;
 import baloght.tongue.ui.register.RegisterMvpView;
 import baloght.tongue.ui.register.RegisterPresenter;
@@ -102,7 +105,13 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    GameFMvpPresenter<GameFMvpView> provideGameFPresenter (GameFPresenter<GameFMvpView> presenter){
+    DesertMvpPresenter<DesertMvpView> provideGameFPresenter (DesertPresenter<DesertMvpView> presenter){
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    ResultMvpPresenter<ResultMvpView> provideResultPresenter (ResultPresenter<ResultMvpView> presenter){
         return presenter;
     }
 }

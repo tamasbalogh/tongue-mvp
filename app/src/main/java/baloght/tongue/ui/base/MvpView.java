@@ -22,4 +22,5 @@ public interface MvpView {
     void hideKeyboard();
 
     void warnUser(TextView textView);
+
 }

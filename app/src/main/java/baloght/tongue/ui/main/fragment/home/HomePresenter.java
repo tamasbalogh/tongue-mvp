@@ -2,14 +2,11 @@ package baloght.tongue.ui.fragment.home;
 
 import android.util.Log;
 
-import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
 import baloght.tongue.data.DataManager;
 import baloght.tongue.ui.base.BasePresenter;
-import baloght.tongue.utils.ImageHandler;
-import baloght.tongue.utils.LogUtil;
 
 /**
  * Created by baloght on 2018.04.12..
